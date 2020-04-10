@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Методические указания по выполнению расчётно-графической работы в R</title>
+  <meta name="description" content="Методические указания по выполнению расчётно-графической работы в R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Методические указания по выполнению расчётно-графической работы в R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Методические указания по выполнению расчётно-графической работы в R" />
+  
+  
+  
+
+<meta name="author" content="Михаил Лысенко" />
+
+
+<meta name="date" content="2020-04-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Методические указания по выполнению расчётно-графической работы в R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="#задание-на-расчётно-графическую-работу"><i class="fa fa-check"></i><b>1</b> Задание на расчётно-графическую работу</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="#порядок-выполнения-работы"><i class="fa fa-check"></i><b>1.1</b> Порядок выполнения работы</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Опубликовано с bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Методические указания по выполнению расчётно-графической работы в R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Методические указания по выполнению расчётно-графической работы в R</h1>
+<p class="author"><em>Михаил Лысенко</em></p>
+<p class="date"><em>2020-04-11</em></p>
+</div>
+<div id="задание-на-расчётно-графическую-работу" class="section level1">
+<h1><span class="header-section-number">Раздел 1</span> Задание на расчётно-графическую работу</h1>
+<p>Федеральной службой государственной статистики РФ ежеквартально проводятся бюджетные обследования домашних хозяйств по всем регионам России об условиях проживания и уровне благосостояния населения. Необходимо проанализировать данные обследования о расходах и доходах домохозяйств.
+В рамках работы данные обследований описываются следующими показателями:
+- код территории по ОКАТО (переменная <strong>ТЕРРИТОРИЯ</strong>)<br />
+- тип населенного пункта (переменная <strong>ТИПНАС</strong>, 1 - город, 2 - село)<br />
+- расходы на продукты питания (переменная <strong>ПРОДПИТ</strong>, <em>y</em>(1))<br />
+- расходы на непродовольственные товары (переменная <strong>НЕПРОД</strong>, <em>y</em>(2))<br />
+- расходы на оплату услуг (переменная <strong>УСЛУГИ</strong>, <em>y</em>(3))<br />
+- расходы на покупку алкогольной продукции (переменная <strong>АЛКО</strong>, <em>x</em><sub><em>0</em></sub>)<br />
+- доходы домохозяйства (переменная <strong>ДОХОД</strong>, <em>x</em><sub><em>1</em></sub>)<br />
+- сбережения домохозяйства (переменная <strong>СБЕРЕЖ</strong>, <em>x</em><sub><em>2</em></sub>)<br />
+- число людей в домохозяйстве (<strong>ЧИСЛОЛЮД</strong>, <em>x</em><sub><em>3</em></sub>)<br />
+- число детей в домохозяйстве (<strong>ЧИСЛОДЕТ</strong>, <em>x</em><sub><em>4</em></sub>)</p>
+<p>Федеральный округ и отклик <em>y</em> берутся в соответствии с выданным вариантом.</p>
+<div id="порядок-выполнения-работы" class="section level2">
+<h2><span class="header-section-number">1.1</span> Порядок выполнения работы</h2>
+<p><strong>1.</strong> Прочитать исходные данные, Исследовать структуру данных: сколько наблюдений, какие поля, какого типа, есть ли пропуски. Исключить отклики <em>y</em>, не соответствующие выданному варианту.<br />
+<strong>2.</strong> Дополнить данные полями из файла <em>codes.csv</em>:<br />
+- <strong>Код</strong>: код региона по ОКАТО, соответствующий переменной ТЕРРИТОРИЯ в данных по обследованиям<br />
+- <strong>Название</strong>: название региона<br />
+- <strong>ФО</strong>: федеральный округ, к которому относится регион<br />
+- <strong>hc-a2</strong>: код региона, соответствующий переменной hc-a2 карты “Russia with disputed territories” библиотеки Highcharter</p>
+<p>Сколько наблюдений приходится на каждый из федеральных округов?<br />
+Вывести топ-10 регионов по убыванию количества наблюдений.<br />
+Вывести топ-10 регионов по убыванию среднего значения отклика <em>y</em>.</p>
+<p><strong>3.</strong> Рассчитать новую переменную: доход на одного взрослого (<em>x</em><sub><em>1</em></sub>/(<em>x</em><sub><em>3</em></sub>-<em>x</em><sub><em>4</em></sub>)).<br />
+По полученному показателю Для каждого региона рассчитать среднее арифметическое и медиану.<br />
+Отобразить полученные значения на карте “Russia with disputed territories” библиотеки Highcharter (с учётом, что в данных по обследованиям ХМАО и ЯНАО относятся к Тюменской области, а Ненецкий АО к Архангельской области). Цветовая шкала в зависимости от среднего, во всплывающем окне выводить название рениона, среднее и медиану.</p>
+<p>Проанализировать результаты, сделать выводы. Как различаются регионы между собой? Отличается ли средний доход от медианного дохода. В связи с чем возникают различия?</p>
+<p><strong>4.</strong> Отфильтровать данные, оставив наблюдения по федеральному округу в соответствии с вариантом. Отклик
+На одном рисунке построить корреляционные поля, рассчитать коэффициенты корреляции и распределения между переменными <em>y</em>, <em>x</em><sub><em>0</em></sub>, <em>x</em><sub><em>1</em></sub>, <em>x</em><sub><em>2</em></sub>, <em>x</em><sub><em>3</em></sub>, <em>x</em><sub><em>4</em></sub> (функция ggpairs() библиотеки GGally). Сделать выводы о наличии связи между показателями, её виде и форме.</p>
+<p><strong>5.</strong> Провести проверку данных на наличие выбросов с удалением всех наблюдений <span class="math inline">\(\overline{x}_{(i)}=(x_{1i},x_{2i})\)</span>, для которых выполняется соотношение <span class="math inline">\(h_{i}=\overline{x}_{(i)}(X^{T}X)^{-1}\overline{x}_{(i)}^{T}\geqslant \frac{3}{N}\)</span>, где <span class="math inline">\(X\)</span> - матрица, составленная из значений переменных <em>x</em><sub><em>1</em></sub> и <em>x</em><sub><em>2</em></sub>. На основе оставшихся наблюдений провести расчет основных выборочных характеристик, проинтерпретировать результаты, сделать выводы.</p>
+<p><strong>6.</strong> Рассчитать выборочные парные коэффициенты корреляции для всех возможных пар переменных, проверить их на значимость, сделать выводы о тесноте связи между признаками.</p>
+<p><strong>7.</strong> Построить корреляционное поле между откликом и доходом.<br />
+Построить линейную модель парной регрессии между этими переменными. Добавить линию регрессии на координатную плоскость. Проанализировать результаты (форма корреляционного поля, что показывают оценки параметров, каково качество модели, выводы о значимости параметров и модели).</p>
+<p>Проделать то же самое по прологарифмированным переменным. Сделать выводы, что изменилось?</p>
+<p>Доп. баллы: для двух моделей построить и проанализировать корреляционное поле между доходом и модулем остатков модели. С помощию критерия Голдфельда-Квандта изучить обе модели на наличие гетероскедастичности. Сделать выводы.</p>
+<p><strong>8.</strong> В модель с логарифмированными переменными добавить факторную переменную ТИПНАС, учитывая взаимодействие этой переменной с величиной дохода. Построить корреляционное поле, новую переменную обозначив цветом. Добавить линии регрессии, проинтерпретировать результаты и сделать выводы.</p>
+<p><strong>9.</strong> Построить линейную модель множественной регресии по всем входным переменным <em>x</em><sub><em>0</em></sub>, <em>x</em><sub><em>1</em></sub>, <em>x</em><sub><em>2</em></sub>, <em>x</em><sub><em>3</em></sub>, <em>x</em><sub><em>4</em></sub>, сделать выводы. Проранжировать входные факторы по степени влияния на отклик при помощи коэффициентов эластичности. Отобрать два наиболее сильно влияющих фактора, изобразить в трёх измерениях модель частной регрессии с этими факторами, заменив медианами значения остальных переменных: добавить исходные данные, плоскость регрессии и плоскости 95% доверительного интервала. Затем построить этот график, прологарифмировав значения отклика, прогнозов и доверительных интервалов. Сделать выводы.</p>
+<p><strong>10.</strong> Сделать общие выводы по проделанной работе в терминах исходных показателей.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rgr_econometrics.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

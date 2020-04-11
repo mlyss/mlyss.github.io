@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Раздел 3 Introduction | Методические указания по выполнению расчётно-графической работы в R</title>
-  <meta name="description" content="Раздел 3 Introduction | Методические указания по выполнению расчётно-графической работы в R" />
+  <title>Раздел 2 Начало работы | Методические указания по выполнению расчётно-графической работы в R</title>
+  <meta name="description" content="Раздел 2 Начало работы | Методические указания по выполнению расчётно-графической работы в R" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Раздел 3 Introduction | Методические указания по выполнению расчётно-графической работы в R" />
+  <meta property="og:title" content="Раздел 2 Начало работы | Методические указания по выполнению расчётно-графической работы в R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Раздел 3 Introduction | Методические указания по выполнению расчётно-графической работы в R" />
+  <meta name="twitter:title" content="Раздел 2 Начало работы | Методические указания по выполнению расчётно-графической работы в R" />
   
   
   
@@ -24,14 +24,14 @@
 <meta name="author" content="Михаил Лысенко" />
 
 
-<meta name="date" content="2020-04-10" />
+<meta name="date" content="2020-04-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="test.html"/>
+<link rel="prev" href="index.html"/>
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -128,16 +128,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Методические указания по выполнению расчётно-графической работы в R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Задание на расчётно-графическую работу</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#порядок-выполнения-работы"><i class="fa fa-check"></i><b>1.1</b> Порядок выполнения работы</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>2</b> Test</a></li>
-<li class="chapter" data-level="3" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>3</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Начало работы</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#установка-r-и-rstudio-знакомство-с-рабочей-областью"><i class="fa fa-check"></i><b>2.1</b> Установка R и Rstudio, знакомство с рабочей областью</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#типы-переменных"><i class="fa fa-check"></i><b>2.2</b> Типы переменных</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#основные-операторы"><i class="fa fa-check"></i><b>2.3</b> Основные операторы</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#структуры-данных"><i class="fa fa-check"></i><b>2.4</b> Структуры данных</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#некоторые-полезные-функции"><i class="fa fa-check"></i><b>2.5</b> Некоторые полезные функции</a></li>
+</ul></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://pages.github.com/" target="blank">Опубликовано с GitHub Pages</a></li>
 
 </ul>
 
@@ -157,194 +162,359 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="intro" class="section level1">
-<h1><span class="header-section-number">Раздел 3</span> Introduction</h1>
-<p>You can label chapter and section titles using <code>{#label}</code> after them, e.g., we can reference Chapter <a href="intro.html#intro">3</a>. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter <a href="#methods"><strong>??</strong></a>.</p>
-<p>Figures and tables with captions will be placed in <code>figure</code> and <code>table</code> environments, respectively.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">.1</span>, <span class="fl">.1</span>))</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
-<img src="rgr_econometrics_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
-<p class="caption">
-Рис. 3.1: Here is a nice figure!
-</p>
+<h1><span class="header-section-number">Раздел 2</span> Начало работы</h1>
+<div id="установка-r-и-rstudio-знакомство-с-рабочей-областью" class="section level2">
+<h2><span class="header-section-number">2.1</span> Установка R и Rstudio, знакомство с рабочей областью</h2>
+<p>Скачиваем установочный файл R <a href="https://cran.r-project.org/bin/windows/base/">по ссылке</a>. (кнопка “Download R 3.6.3 for Windows” или более поздняя версия). Запускаем, устанавливаем без изменений.</p>
+<p>Скачиваем и устанавливаем RStudio <a href="https://rstudio.com/products/rstudio/download/#download">с официального сайта</a>. RStudio - среда разработки для языка R, позволяющая работать более комфортно.</p>
+<p>Запускаем RStudio, создаём новый скрипт: File -&gt; New File -&gt; R Script<br />
+<img src="rgr_econometrics_files/2020-04-11%2007_20_45-~_ttt%20-%20RStudio.png" alt="Рабочая область" /></p>
+<p>Рабочая область будет разделена на четыре части.<br />
+Слева вверху - <strong>скрипт</strong>, то есть код, написанный и сохранённый в отдельном файле с расширением .R<br />
+Слева внизу - <strong>консоль</strong>, в которой отображаются команды и ход их исполнения. Команды можно прописывать и выполнять сразу в консоли Это удобнее делать в случае, если это разовая команда, которую не имеет смысла сохранять в скрипте. Для того, чтобы исполнить команды из скрипта, нужно поставить курсор в нужную строку, либо выдалить нужную часть скрипта и нажать <em>Ctrl</em>+<em>Enter</em>.<br />
+Справа вверху - <strong>рабочая среда</strong> (Environment) - список всех объектов, с которыми можно работать. Изначально он будет пуст.<br />
+Справа внизу обычно выводятся графики (вкладка Plots), справка о функциях (вкладка Help), список установленных библиотек (Packages).</p>
+<p>Пример:<br />
+<img src="rgr_econometrics_files/2020-04-11%2007_38_37-~_ttt%20-%20RStudio.png" alt="Первые команды" /></p>
+<p>В консоль было введено 2*5 и там же получен результат исполнения - 10.<br />
+Затем был выделен и запущен скрипт из верхней области: переменной <em>a</em> присвоен (команда &lt;-) результат выражения 9/3, переменная появилась в рабочем пространстве справа. Повторный вызов переменной <em>a</em> выводит в консоль сохранённое значение - 3.<br />
+Затем был построен график, результат исполнения команды отобразился в нижнем правом углу во вкладке Plots.</p>
+<p>При работе полезно использовать кнопку <em>Tab</em>, чтобы вызывать окно с подсказками<br />
+Комментарии в скрипте можно записывать после символа #. Комментарии не исполняются и нужны для создания пометок внутри кода</p>
+<p><a href="https://cran.r-project.org/doc/contrib/Baggott-refcard-v2.pdf"><strong>Шпаргалка с основными операторами, функциями, командами (на английском языке)</strong></a><br />
+<a href="https://www.youtube.com/watch?v=HCl93a0h72s"><strong>Видео Б.Демешева “Запуск R в первый раз. Консольный режим в R”</strong></a><br />
+<a href="https://www.youtube.com/watch?v=LRYSOjtVExQ"><strong>Видео Б.Демешева “Написание первого скрипта в R”</strong></a></p>
 </div>
-<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="intro.html#fig:nice-fig">3.1</a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="intro.html#tab:nice-tab">3.1</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
-<a class="sourceLine" id="cb2-2" title="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
-<a class="sourceLine" id="cb2-3" title="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb2-4" title="4">)</a></code></pre></div>
-<table>
-<caption><span id="tab:nice-tab">Таблица 3.1: </span>Here is a nice table!</caption>
-<thead>
-<tr class="header">
-<th align="right">Sepal.Length</th>
-<th align="right">Sepal.Width</th>
-<th align="right">Petal.Length</th>
-<th align="right">Petal.Width</th>
-<th align="left">Species</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.7</td>
-<td align="right">3.2</td>
-<td align="right">1.3</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.6</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.0</td>
-<td align="right">3.6</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.7</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.6</td>
-<td align="right">3.4</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.0</td>
-<td align="right">3.4</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.4</td>
-<td align="right">2.9</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.7</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.8</td>
-<td align="right">3.4</td>
-<td align="right">1.6</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.8</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.3</td>
-<td align="right">3.0</td>
-<td align="right">1.1</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.8</td>
-<td align="right">4.0</td>
-<td align="right">1.2</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.7</td>
-<td align="right">4.4</td>
-<td align="right">1.5</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.3</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.7</td>
-<td align="right">3.8</td>
-<td align="right">1.7</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.8</td>
-<td align="right">1.5</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-</tbody>
-</table>
-<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown">2020</a>)</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-xie2015">2015</a>)</span>.</p>
+<div id="типы-переменных" class="section level2">
+<h2><span class="header-section-number">2.2</span> Типы переменных</h2>
+<p>Чтобы узнать тип переменной, используется функция <strong>class()</strong><br />
+<strong><em>NA</em></strong> - переменная для пропущенного значения (Not Available)</p>
+<p>Основные типы переменных:<br />
+<strong>Логические</strong> (TRUE, T, FALSE, F)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">class</span>(<span class="ot">TRUE</span>) <span class="co"># TRUE, T - истина; FALSE, F - ложь</span></a></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<p><strong>Числовые</strong> (4, -5.5, 100, 1.2e+10, Inf, -Inf, NaN)<br />
+NaN - “Not a Number” - получается в результате некоторых операций, напр. квадратного корня из (-1). <a href="https://ru.wikipedia.org/wiki/NaN">Подробнее</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">class</span>(<span class="fl">5.22e+3</span>)  <span class="co"># экспоненциальная запись, = 5.22*10^3 = 5220</span></a></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">class</span>(<span class="op">-</span><span class="ot">Inf</span>)  <span class="co"># минус бесконечность</span></a></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p><strong>Текстовые</strong> (“ch”, “10”, ’ - ‘,’’)</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">class</span>(<span class="st">&#39;&#39;</span>) <span class="co"># записываются в одинарных либо двойных кавычках</span></a></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p><strong>Менять тип переменных можно с помощью функций:</strong><br />
+<strong>as.logical()</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">as.logical</span>(<span class="op">-</span><span class="dv">595</span>) <span class="co"># число 0 меняется на FALSE, остальные числа - на TRUE</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">as.logical</span>(<span class="st">&quot;F&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p><strong>as.numeric()</strong></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">as.numeric</span>(<span class="st">&#39;950&#39;</span>)</a></code></pre></div>
+<pre><code>## [1] 950</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">as.numeric</span>(T) <span class="co"># TRUE меняется на число 1, FALSE на 0</span></a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p><strong>as.character()</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">as.character</span>(<span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;10&quot;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">as.character</span>(<span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;FALSE&quot;</code></pre>
+</div>
+<div id="основные-операторы" class="section level2">
+<h2><span class="header-section-number">2.3</span> Основные операторы</h2>
+<p><strong>Математические: +, -, *, /, ^</strong> - сложение, вычитание, умножение, деление, возведение в степень</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">(<span class="dv">2</span><span class="op">*</span><span class="dv">3</span><span class="op">+</span><span class="dv">8</span><span class="op">/</span><span class="dv">2</span>)<span class="op">^</span>(<span class="dv">5-3</span>)</a></code></pre></div>
+<pre><code>## [1] 100</code></pre>
+<p><strong>Сравнения: &lt;, &gt;, &lt;=, &gt;=, ==, !=</strong> - меньше, больше, меньше либо равно, больше либо равно, равно, не равно<br />
+Результат - логическая переменная TRUE или FALSE</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="dv">10</span><span class="op">&lt;=</span><span class="dv">5</span> <span class="co"># сравнение чисел</span></a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="dv">0</span><span class="op">==</span><span class="ot">FALSE</span> <span class="co"># FALSE заменяется на 0, TRUE на 1</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="st">&#39;faf&#39;</span><span class="op">&lt;</span><span class="st">&#39;fb&#39;</span> <span class="co"># текстовые переменые сравниваются по алфавиту, цифры считаются меньше букв</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p><strong>Логические: &amp;, |, !</strong> - И, ИЛИ, НЕ</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="ot">TRUE</span> <span class="op">&amp;</span><span class="st"> </span>(<span class="dv">1</span><span class="op">&gt;</span><span class="dv">0</span>) <span class="op">&amp;</span><span class="st"> </span>(<span class="st">&#39;faf&#39;</span><span class="op">!=</span><span class="st">&#39;ga&#39;</span>)  <span class="co"># TRUE, если все составляющие тоже TRUE. При одном FALSE всё выражение FALSE</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">(<span class="dv">2</span><span class="op">==</span><span class="dv">22</span>) <span class="op">|</span><span class="st"> </span>(<span class="dv">5</span><span class="op">&gt;</span><span class="dv">2</span>) <span class="op">|</span><span class="st"> </span>(F) <span class="co"># TRUE, если хотя бы одно из составляющих TRUE. Иначе FALSE   </span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="op">!</span>(<span class="dv">1</span><span class="op">&gt;</span><span class="dv">0</span>) <span class="co"># отрицание, F меняется на T и наоборот</span></a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p><strong>Преобразование матриц</strong><br />
+%*% - умножение матриц</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">matrix</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)<span class="op">%*%</span><span class="kw">matrix</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">2</span>)</a></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]   36   36
+## [2,]   36   36
+## [3,]   36   36
+## [4,]   36   36</code></pre>
+<p>t() - транспонирование матрицы</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">t</span>(<span class="kw">matrix</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)<span class="op">%*%</span><span class="kw">matrix</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">2</span>)) <span class="co"># транспонируем из примера выше  </span></a></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]   36   36   36   36
+## [2,]   36   36   36   36</code></pre>
+<p>solve() - нахождение обратной матрицы</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="kw">solve</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>), <span class="dv">3</span>, <span class="dv">3</span>))  </a></code></pre></div>
+<pre><code>##             [,1]        [,2] [,3]
+## [1,] -0.13333333  0.56666667 -0.4
+## [2,]  0.16666667 -0.08333333  0.0
+## [3,]  0.03333333 -0.51666667  0.6</code></pre>
+<p><strong>%in%</strong> - есть ли значение слева от оператора в наборе значений справа</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="dv">5</span> <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="ot">NA</span>) <span class="co"># 5 есть в векторе справа</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>, <span class="ot">NA</span>) <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>) <span class="co"># 1 нет, 2 есть, NA есть</span></a></code></pre></div>
+<pre><code>## [1] FALSE  TRUE  TRUE</code></pre>
+</div>
+<div id="структуры-данных" class="section level2">
+<h2><span class="header-section-number">2.4</span> Структуры данных</h2>
+<p><strong>Вектор</strong> - последовательность значений, все элементы вектора должны быть одного типа (числовые, текстовые и т д).<br />
+Создаётся с помощью оператора c(), внутри которого, через запятую, перечисляются элементы вектора</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="ot">Inf</span>, <span class="ot">NA</span>, <span class="dv">1000</span>)</a></code></pre></div>
+<pre><code>## [1]   -2  Inf   NA 1000</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="kw">c</span>(<span class="st">&#39;aa&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="ot">NA</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;aa&quot; &quot;B&quot;  NA</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">c</span>(F,F,T)</a></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE</code></pre>
+<p>Некоторые способы создания:<br />
+С помощью оператора : , который создаёт последовательность чисел от числа слева до числа справа с шагом в единицу</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="dv">-5</span><span class="op">:</span><span class="dv">5</span></a></code></pre></div>
+<pre><code>##  [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="fl">2.7</span><span class="op">:</span><span class="fl">8.5</span></a></code></pre></div>
+<pre><code>## [1] 2.7 3.7 4.7 5.7 6.7 7.7</code></pre>
+<p>Функция rep() - реплицирует (копирует) первый аргумент то количество раз, чему равен второй аргумент</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## [1] NA NA NA NA NA</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">rep</span>(<span class="st">&quot; - &quot;</span>, <span class="dv">10</span>)</a></code></pre></div>
+<pre><code>##  [1] &quot; - &quot; &quot; - &quot; &quot; - &quot; &quot; - &quot; &quot; - &quot; &quot; - &quot; &quot; - &quot; &quot; - &quot; &quot; - &quot; &quot; - &quot;</code></pre>
+<p>Функция seq() - создаёт последовательность чисел от минимального (аргумент 1) до максимального (аргумент 2) с шагом, равным аргументу 3</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1"><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">22</span>)</a></code></pre></div>
+<pre><code>## [1]  1 23 45 67 89</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="kw">seq</span>(<span class="dv">15</span>,<span class="op">-</span><span class="dv">20</span>,<span class="op">-</span><span class="dv">4</span>)</a></code></pre></div>
+<pre><code>## [1]  15  11   7   3  -1  -5  -9 -13 -17</code></pre>
+<p>Способы можно комбинировать</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="ot">Inf</span>,<span class="dv">5</span><span class="op">:</span><span class="dv">8</span>,<span class="ot">NaN</span>), <span class="dv">3</span>)</a></code></pre></div>
+<pre><code>##  [1] -Inf    5    6    7    8  NaN -Inf    5    6    7    8  NaN -Inf    5    6
+## [16]    7    8  NaN</code></pre>
+<p><strong>Матрица (двумерная)</strong> - набор данных, имеющий два измерения. Все элементы матрицы должны быть одного типа.<br />
+Создаётся путём указания вектора значений, которые последовательно распределяются по заданным размерностям матрицы (по умолчанию заполняется по колонкам)</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># вектор от 1 до 6 распределяем на матрицу 2х3 по колонкам</span></a></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> T) <span class="co"># вектор от 1 до 12 распределяем на матрицу 4х3 по строкам</span></a></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## [4,]   10   11   12</code></pre>
+<p><strong>Список</strong> - объект типа list, элементы которого могут быть объектами любого типа<br />
+Создаётся командой list()</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1">list1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&#39;obj1&#39;</span> =<span class="st"> </span><span class="dv">5</span><span class="op">:</span><span class="dv">10</span>, <span class="st">&#39;элемент 2&#39;</span> =<span class="st"> &#39;текст&#39;</span>, <span class="st">&#39;таблица&#39;</span>=<span class="kw">data.frame</span>(<span class="dt">a=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">b=</span><span class="dv">2</span><span class="op">:</span><span class="dv">4</span>)) <span class="co"># созданный список записали в переменную list1</span></a>
+<a class="sourceLine" id="cb69-2" title="2">list1 <span class="co"># вывели весь список</span></a></code></pre></div>
+<pre><code>## $obj1
+## [1]  5  6  7  8  9 10
+## 
+## $`элемент 2`
+## [1] &quot;текст&quot;
+## 
+## $таблица
+##   a b
+## 1 1 2
+## 2 2 3
+## 3 3 4</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">list1<span class="op">$</span><span class="st">`</span><span class="dt">элемент 2</span><span class="st">`</span> <span class="co"># индексация по названию объекта в списке</span></a></code></pre></div>
+<pre><code>## [1] &quot;текст&quot;</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">list1[[<span class="dv">3</span>]] <span class="co"># индексация по порядковому номеру объекта в списке</span></a></code></pre></div>
+<pre><code>##   a b
+## 1 1 2
+## 2 2 3
+## 3 3 4</code></pre>
+<p><strong>data.frame</strong> - класс таблиц. столбцы в data.frame могут быть разного типа, но элементы внутри столбца - одного типа. Можно представлять объекты этого класса как список векторов одинаковой длины. Создаётся командой data.frame().</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1">df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;col1&quot;</span>=<span class="kw">c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;c&#39;</span>), <span class="dt">col2=</span><span class="dv">2</span>, <span class="st">&#39;col3&#39;</span>=<span class="kw">c</span>(F,F,<span class="ot">NA</span>))</a>
+<a class="sourceLine" id="cb75-2" title="2">df1<span class="op">$</span>col1  <span class="co"># знак $ для индексации по колонкам</span></a></code></pre></div>
+<pre><code>## [1] a b c
+## Levels: a b c</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">df1[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>), <span class="kw">c</span>(<span class="st">&#39;col1&#39;</span>, <span class="st">&#39;col2&#39;</span>)]  <span class="co"># индексация в квадратных скобках: [ вектор номеров строк , вектор названий колонок ]</span></a></code></pre></div>
+<pre><code>##   col1 col2
+## 2    b    2
+## 1    a    2</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">df1[<span class="kw">c</span>(F,T,T),]  <span class="co"># индексация с помощью логического вектора, выводятся строки с TRUE. Обязательно указываем запятую после индексации по строкам</span></a></code></pre></div>
+<pre><code>##   col1 col2  col3
+## 2    b    2 FALSE
+## 3    c    2    NA</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">class</span>(df1[,<span class="dv">1</span>])  <span class="co"># столбец 1 таблицы имеет класс factor - класс для категориальных переменных, с уровнями (возможными значениями) a, b, c</span></a></code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+</div>
+<div id="некоторые-полезные-функции" class="section level2">
+<h2><span class="header-section-number">2.5</span> Некоторые полезные функции</h2>
+<p><strong>Расчётные функции</strong></p>
+<p><strong>sum(x)</strong> - сумма</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">sum</span>(<span class="op">-</span><span class="dv">10</span><span class="op">:</span><span class="dv">12</span>)</a></code></pre></div>
+<pre><code>## [1] 23</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="kw">sum</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">5</span>), <span class="dt">na.rm=</span>T) <span class="co"># na.rm=T - не обращать внимание на пропуски при вычислении. Применяется во многих подобных функциях</span></a></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<p><strong>mean(x)</strong> - среднее</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="kw">mean</span>(<span class="op">-</span><span class="dv">10</span><span class="op">:</span><span class="dv">12</span>)</a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">5</span>), <span class="dt">na.rm=</span>T)</a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p><strong>min(x)</strong>, <strong>max(x)</strong> - минимум, максимум</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">min</span>(<span class="op">-</span><span class="dv">10</span><span class="op">:</span><span class="dv">12</span>)</a></code></pre></div>
+<pre><code>## [1] -10</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">max</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">5</span>), <span class="dt">na.rm=</span>T)</a></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p><strong>log(x, base)</strong> - логарифм <em>x</em> по основанию <em>base</em></p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="kw">log</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) <span class="co"># без указания основания берётся натуральный логарифм</span></a></code></pre></div>
+<pre><code>## [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1"><span class="kw">log</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## [1] 0.0000000 0.4306766 0.6826062 0.8613531 1.0000000</code></pre>
+<p><strong>cor(x, y)</strong> - парный коэффициент корреляции между двумя векторами</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="kw">cor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>))</a></code></pre></div>
+<pre><code>## [1] 0.9486833</code></pre>
+<p><strong>var(x)</strong> - дисперсия<br />
+<strong>sd(x)</strong> - стандартное отклонение<br />
+<strong>median(x)</strong> - медиана</p>
+<p><strong>Работа с данными</strong></p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1">df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">col1=</span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;f&#39;</span>),</a>
+<a class="sourceLine" id="cb101-2" title="2">                  <span class="dt">col2=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>))</a></code></pre></div>
+<p><strong>head(x, n)</strong>, <strong>tail(x, n)</strong> - первые или последние <em>n</em> элементов объекта <em>x</em> (по умолчанию <em>n</em> = 6)</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="kw">head</span>(df2, <span class="dv">3</span>)</a></code></pre></div>
+<pre><code>##   col1 col2
+## 1    a    1
+## 2    b    2
+## 3    c    3</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="kw">tail</span>(df2,<span class="dv">2</span>)</a></code></pre></div>
+<pre><code>##   col1 col2
+## 6    d    4
+## 7    f    3</code></pre>
+<p><strong>summary(x)</strong> - вывод основных параметров объекта</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="kw">summary</span>(df2)</a></code></pre></div>
+<pre><code>##  col1       col2      
+##  a:1   Min.   :1.000  
+##  b:1   1st Qu.:2.500  
+##  c:1   Median :3.000  
+##  d:3   Mean   :3.429  
+##  f:1   3rd Qu.:4.500  
+##        Max.   :6.000</code></pre>
+<p><strong>length()</strong> - длина объекта</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="kw">length</span>(df2<span class="op">$</span>col2)</a></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<p><strong>nrow()</strong>, <strong>ncol()</strong> - число строк и число стобцов</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="kw">c</span>(<span class="kw">nrow</span>(df2), <span class="kw">ncol</span>(df2))</a></code></pre></div>
+<pre><code>## [1] 7 2</code></pre>
+<p><strong>sort()</strong> - отсортировать вектор (по умолчанию - по возрастанию)</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="kw">sort</span>(df2<span class="op">$</span>col2)</a></code></pre></div>
+<pre><code>## [1] 1 2 3 3 4 5 6</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1"><span class="kw">sort</span>(df2<span class="op">$</span>col2, <span class="dt">decreasing =</span> T) <span class="co"># по убыванию</span></a></code></pre></div>
+<pre><code>## [1] 6 5 4 3 3 2 1</code></pre>
+<p><strong>order()</strong> - возвращает индексы элементов в порядке возрастания</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="kw">order</span>(df2<span class="op">$</span>col2)</a></code></pre></div>
+<pre><code>## [1] 1 2 3 7 6 5 4</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="kw">order</span>(df2<span class="op">$</span>col2, <span class="dt">decreasing =</span> T)  <span class="co"># в подярке убывания</span></a></code></pre></div>
+<pre><code>## [1] 4 5 6 3 7 2 1</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1">df2[<span class="kw">order</span>(df2<span class="op">$</span>col2, <span class="dt">decreasing =</span> T),]   <span class="co"># передаём индексы таблице - получаем отсортированную по убыванию *col2*</span></a></code></pre></div>
+<pre><code>##   col1 col2
+## 4    d    6
+## 5    d    5
+## 6    d    4
+## 3    c    3
+## 7    f    3
+## 2    b    2
+## 1    a    1</code></pre>
+<p><strong>table(x)</strong> - возвращает таблицу с уникальными значениями вектора x и числом их вхождений</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="kw">table</span>(df2<span class="op">$</span>col1)</a></code></pre></div>
+<pre><code>## 
+## a b c d f 
+## 1 1 1 3 1</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="kw">sort</span>(<span class="kw">table</span>(df2<span class="op">$</span>col1), <span class="dt">decreasing =</span> T)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]  <span class="co"># сортируем по убыванию и берём топ 3 значений</span></a></code></pre></div>
+<pre><code>## 
+## d a b 
+## 3 1 1</code></pre>
+<p><strong>unique()</strong> - возвращает объект с уникальными значениями (без повторений)</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="kw">unique</span>(df2<span class="op">$</span>col2)</a></code></pre></div>
+<pre><code>## [1] 1 2 3 6 5 4</code></pre>
+<p><strong>apply()</strong>,<strong>lapply()</strong>, <strong>sapply()</strong> - применение функции к каждому элементу объекта. apply применяется к матрицам, таблицам; lapply возвращает список; sapply возвращает вектор</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="cf">function</span>(x)x<span class="op">^</span><span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 4
+## 
+## [[3]]
+## [1] 9
+## 
+## [[4]]
+## [1] 16
+## 
+## [[5]]
+## [1] 25</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="cf">function</span>(x)x<span class="op">^</span><span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## [1]  1  4  9 16 25</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="kw">apply</span>(df2, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="cf">function</span>(x)<span class="kw">length</span>(<span class="kw">unique</span>(x)))  <span class="co"># количество уникальных значений по столбцам. Чтобы применить функцию к строкам, MARGIN = 1</span></a></code></pre></div>
+<pre><code>## col1 col2 
+##    5    6</code></pre>
+<p><strong>rbind()</strong>, <strong>cbind()</strong> - соединить несколько строк по строкам, столбцам (<em>r-</em> для row, <em>c-</em> для column)</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="kw">rbind</span>(df2, <span class="kw">data.frame</span>(<span class="dt">col1=</span><span class="st">&#39;A&#39;</span>, <span class="dt">col2=</span><span class="dv">10</span>)) <span class="co"># названия столбцов должны соответствовать</span></a></code></pre></div>
+<pre><code>##   col1 col2
+## 1    a    1
+## 2    b    2
+## 3    c    3
+## 4    d    6
+## 5    d    5
+## 6    d    4
+## 7    f    3
+## 8    A   10</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="kw">cbind</span>(df2, <span class="kw">data.frame</span>(<span class="dt">col3=</span><span class="dv">11</span><span class="op">:</span><span class="dv">17</span>))</a></code></pre></div>
+<pre><code>##   col1 col2 col3
+## 1    a    1   11
+## 2    b    2   12
+## 3    c    3   13
+## 4    d    6   14
+## 5    d    5   15
+## 6    d    4   16
+## 7    f    3   17</code></pre>
+<p><strong>merge()</strong> - объединение двух таблиц по общему ключу<br />
+Параметр <strong><em>by</em></strong> указывает на наименование столбца с ключами.<br />
+Если столбцы с ключами для первой и второй таблицы имеют разные названия, они перечисляются отдельно параметрами <strong><em>by.x</em></strong> и <strong><em>by.y</em></strong> для первой и второй таблицы соответственно.</p>
+<p>По умолчанию в результате остаются только строки, имеющие общие ключи в обеих таблицах:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="kw">merge</span>(df2,</a>
+<a class="sourceLine" id="cb138-2" title="2">      <span class="kw">data.frame</span>(<span class="dt">col1=</span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;f&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;A&#39;</span>), <span class="dt">col3=</span><span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">20</span>)), <span class="co"># создали новую таблицу</span></a>
+<a class="sourceLine" id="cb138-3" title="3">      <span class="dt">by=</span><span class="st">&#39;col1&#39;</span>)  <span class="co"># по колонке col1</span></a></code></pre></div>
+<pre><code>##   col1 col2 col3
+## 1    a    1   11
+## 2    d    6   15
+## 3    d    5   15
+## 4    d    4   15
+## 5    f    3   13</code></pre>
+<p>Если нужно сохранить строки первой или второй таблицы, добавляются параметры <strong>all.x=T</strong> или <strong>all.y=T</strong>. На месте, где нет совпадений, появятся пропуски <em>NA</em></p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">merge</span>(df2,</a>
+<a class="sourceLine" id="cb140-2" title="2">      <span class="kw">data.frame</span>(<span class="dt">col1=</span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;f&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;A&#39;</span>), <span class="dt">col3=</span><span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">20</span>)), </a>
+<a class="sourceLine" id="cb140-3" title="3">      <span class="dt">by=</span><span class="st">&#39;col1&#39;</span>,</a>
+<a class="sourceLine" id="cb140-4" title="4">      <span class="dt">all.y=</span>T</a>
+<a class="sourceLine" id="cb140-5" title="5">      )</a></code></pre></div>
+<pre><code>##   col1 col2 col3
+## 1    a    1   11
+## 2    d    6   15
+## 3    d    5   15
+## 4    d    4   15
+## 5    f    3   13
+## 6    A   NA   20</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1"><span class="kw">merge</span>(df2,</a>
+<a class="sourceLine" id="cb142-2" title="2">      <span class="kw">data.frame</span>(<span class="dt">col1=</span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;f&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;A&#39;</span>), <span class="dt">col3=</span><span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">20</span>)), </a>
+<a class="sourceLine" id="cb142-3" title="3">      <span class="dt">by=</span><span class="st">&#39;col1&#39;</span>,</a>
+<a class="sourceLine" id="cb142-4" title="4">      <span class="dt">all.x=</span>T,</a>
+<a class="sourceLine" id="cb142-5" title="5">      <span class="dt">all.y=</span>T</a>
+<a class="sourceLine" id="cb142-6" title="6">      )</a></code></pre></div>
+<pre><code>##   col1 col2 col3
+## 1    a    1   11
+## 2    b    2   NA
+## 3    c    3   NA
+## 4    d    6   15
+## 5    d    5   15
+## 6    d    4   15
+## 7    f    3   13
+## 8    A   NA   20</code></pre>
 
-<div id="refs" class="references">
-<div>
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.</p>
-</div>
-<div>
-<p>———. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
-</div>
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.</p>
-</div>
-<div id="ref-R-bookdown">
-<p>Xie, Yihui. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
 </div>
 </div>
             </section>
@@ -352,7 +522,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="test.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -395,7 +565,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["rgr_econometrics.pdf", "rgr_econometrics.epub"],
+"download": ["rgr_econometrics.epub"],
 "toc": {
 "collapse": "subsection"
 }

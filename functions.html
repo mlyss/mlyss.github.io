@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Раздел 3 Библиотеки и функции | Методические указания по выполнению расчётно-графической работы в R</title>
-  <meta name="description" content="Раздел 3 Библиотеки и функции | Методические указания по выполнению расчётно-графической работы в R" />
+  <title>Раздел 3 Пакеты и функции | Методические указания по выполнению расчётно-графической работы в R</title>
+  <meta name="description" content="Раздел 3 Пакеты и функции | Методические указания по выполнению расчётно-графической работы в R" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Раздел 3 Библиотеки и функции | Методические указания по выполнению расчётно-графической работы в R" />
+  <meta property="og:title" content="Раздел 3 Пакеты и функции | Методические указания по выполнению расчётно-графической работы в R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Раздел 3 Библиотеки и функции | Методические указания по выполнению расчётно-графической работы в R" />
+  <meta name="twitter:title" content="Раздел 3 Пакеты и функции | Методические указания по выполнению расчётно-графической работы в R" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Михаил Лысенко" />
 
 
-<meta name="date" content="2020-04-12" />
+<meta name="date" content="2020-04-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,9 +140,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#основные-операторы"><i class="fa fa-check"></i><b>2.3</b> Основные операторы</a></li>
 <li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#структуры-данных"><i class="fa fa-check"></i><b>2.4</b> Структуры данных</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>3</b> Библиотеки и функции</a><ul>
-<li class="chapter" data-level="3.1" data-path="functions.html"><a href="functions.html#некоторые-полезные-функции"><i class="fa fa-check"></i><b>3.1</b> Некоторые полезные функции</a></li>
-<li class="chapter" data-level="3.2" data-path="functions.html"><a href="functions.html#пакеты"><i class="fa fa-check"></i><b>3.2</b> Пакеты</a></li>
+<li class="chapter" data-level="3" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>3</b> Пакеты и функции</a><ul>
+<li class="chapter" data-level="3.1" data-path="functions.html"><a href="functions.html#функции-в-r"><i class="fa fa-check"></i><b>3.1</b> Функции в R</a></li>
+<li class="chapter" data-level="3.2" data-path="functions.html"><a href="functions.html#некоторые-полезные-функции"><i class="fa fa-check"></i><b>3.2</b> Некоторые полезные функции</a></li>
+<li class="chapter" data-level="3.3" data-path="functions.html"><a href="functions.html#функция-lm-для-моделей-регрессии"><i class="fa fa-check"></i><b>3.3</b> Функция lm() для моделей регрессии</a></li>
+<li class="chapter" data-level="3.4" data-path="functions.html"><a href="functions.html#пакеты"><i class="fa fa-check"></i><b>3.4</b> Пакеты</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://pages.github.com/" target="blank">Опубликовано с GitHub Pages</a></li>
@@ -165,195 +167,429 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="functions" class="section level1">
-<h1><span class="header-section-number">Раздел 3</span> Библиотеки и функции</h1>
+<h1><span class="header-section-number">Раздел 3</span> Пакеты и функции</h1>
+<div id="функции-в-r" class="section level2">
+<h2><span class="header-section-number">3.1</span> Функции в R</h2>
+<p><strong>Функцией</strong> можно назвать именованный фрагмент кода, который принимает на вход некоторые параметры (аргументы функции), производит некоторые операции. Большинство функций возвращают результат, однако некоторые могут только выполнять операции, ничего не возвращая.<br />
+Существуют базовые функции, которые встроены в стандартные пакеты R (о пакетах будет сказано далее).<br />
+Можно использовать функции, которые содержатся в сторонних пакетах, предварительно установив и загрузив нужный пакет.<br />
+Также есть возможность создавать собственные функции.<br />
+Чтобы вывести справку по функции, можно ввести в консоль <code>?</code> и название функции<br />
+Например: <code>?mean</code><br />
+Некоторые аргументы функции могут иметь значения по умолчанию.<br />
+Рассмотрим функцию <strong><code>mean</code></strong> стандартного пакета <code>base</code>, которая рассчитывает среднее арифметическое по заданному набору чисел.<br />
+Аргументы функции:<br />
+- <strong><code>x</code></strong> - объект, по которому ведётся расчёт среднего<br />
+- <strong><code>trim = 0</code></strong> - доля наблюдений, исключаемая из начала и из конца упорядоченного вектора <code>x</code> перед расчётом среднего. По умолчанию равна 0<br />
+- <strong><code>na.rm = FALSE</code></strong> - логический аргумент, указывающий, должны (<code>T</code>) или нет (<code>F</code>) быть исключены пропуски <code>NA</code> перед расчётом среднего. По умолчанию пропуски не исключаются<br />
+Примеры использования:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">mean</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb55-2" title="2"><span class="co"># [1] 23.2</span></a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="kw">mean</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>), <span class="dt">trim =</span> <span class="fl">0.2</span>)  <span class="co"># исключено 20% минимальных и 20% максимальных значений </span></a>
+<a class="sourceLine" id="cb56-2" title="2"><span class="co"># [1] 5</span></a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">mean</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>), <span class="dt">trim =</span> <span class="fl">0.2</span>)  <span class="co"># по умолчанию пропуски не игнорируются</span></a>
+<a class="sourceLine" id="cb57-2" title="2"><span class="co"># [1] NA</span></a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">mean</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>), <span class="dt">trim =</span> <span class="fl">0.2</span>, <span class="dt">na.rm =</span> T)  <span class="co"># игнорировать пропуски</span></a>
+<a class="sourceLine" id="cb58-2" title="2"><span class="co"># [1] 5</span></a></code></pre></div>
+<p>Функцию можно записывать и не указывая названия аргумента, но тогда значения должны идти в том порядке, в котором они шли при создании функции<br />
+Например, порядок аргументов для <code>mean</code>: <code>x</code>, <code>trim</code>, <code>na.rm</code>:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>), <span class="fl">0.2</span>, T)  <span class="co"># аналогичный результат</span></a>
+<a class="sourceLine" id="cb59-2" title="2"><span class="co"># [1] 5</span></a></code></pre></div>
+<p>Попробуем поменять местами значения для <code>x</code> и <code>trim</code>:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">mean</span>(<span class="fl">0.2</span>, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>), T)  <span class="co"># ошибка</span></a>
+<a class="sourceLine" id="cb60-2" title="2"><span class="co"># Error in mean.default(0.2, c(1, 100, 5, 5, 5, NA, NA, NA, NA), T): &#39;trim&#39; must be numeric of length one</span></a></code></pre></div>
+<p>Укажем название только для того аргумента, который стоит не по порядку:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="kw">mean</span>(<span class="dt">trim =</span> <span class="fl">0.2</span>, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="ot">NA</span>), T)</a>
+<a class="sourceLine" id="cb61-2" title="2"><span class="co"># [1] 5</span></a></code></pre></div>
+<p><strong>Создание собственных функций</strong></p>
+<p>Общая схема для собственной функции:</p>
+<pre><code>имя_функции &lt;- function(аргументы) { 
+ код с вычислениями
+ return(возвращаемый_объект) 
+}</code></pre>
+<p>Фигурные скобки можно не использовать, если в теле функции только одно действие<br />
+<code>return()</code> можно не прописывать, если возвращаемый объект вызывается в конце функции<br />
+Например, создадим и используем функцию, которая возводит число в указанную степень (по умолчанию 2)</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">powerN &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">N =</span> <span class="dv">2</span>) x<span class="op">^</span>N  </a>
+<a class="sourceLine" id="cb63-2" title="2"><span class="kw">powerN</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb63-3" title="3"><span class="co"># [1] 25</span></a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="kw">powerN</span>(<span class="dv">5</span>,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb64-2" title="2"><span class="co"># [1] 125</span></a></code></pre></div>
+<p>Пример функции, которая рассчитывает коэффициент вариации:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1">CV &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb65-2" title="2">  mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> T)</a>
+<a class="sourceLine" id="cb65-3" title="3">  sd &lt;-<span class="st"> </span><span class="kw">sd</span>(x, <span class="dt">na.rm =</span> T) <span class="co"># стандартное отклонение</span></a>
+<a class="sourceLine" id="cb65-4" title="4">  <span class="kw">return</span>(sd<span class="op">/</span>mean)</a>
+<a class="sourceLine" id="cb65-5" title="5">}</a>
+<a class="sourceLine" id="cb65-6" title="6"><span class="kw">CV</span>(<span class="dv">5</span><span class="op">:</span><span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb65-7" title="7"><span class="co"># [1] 0.3808762</span></a></code></pre></div>
+<p><a href="https://www.youtube.com/watch?v=4ozGXSR-_Mg"><strong>Видео Б.Демешева “Как написать функцию в R?”</strong></a></p>
+</div>
 <div id="некоторые-полезные-функции" class="section level2">
-<h2><span class="header-section-number">3.1</span> Некоторые полезные функции</h2>
+<h2><span class="header-section-number">3.2</span> Некоторые полезные функции</h2>
 <p><a href="https://cran.r-project.org/doc/contrib/Baggott-refcard-v2.pdf"><strong>Шпаргалка с основными операторами, функциями, командами (на английском языке)</strong></a></p>
 <p><strong>Расчётные функции</strong></p>
 <p><strong><code>sum(x)</code></strong> - сумма</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">sum</span>(<span class="op">-</span><span class="dv">10</span><span class="op">:</span><span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb55-2" title="2"><span class="co"># [1] 23</span></a></code></pre></div>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="kw">sum</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">5</span>), <span class="dt">na.rm=</span>T) <span class="co"># na.rm=T - не обращать внимание на пропуски при вычислении. Применяется во многих подобных функциях</span></a>
-<a class="sourceLine" id="cb56-2" title="2"><span class="co"># [1] 15</span></a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="kw">sum</span>(<span class="op">-</span><span class="dv">10</span><span class="op">:</span><span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb66-2" title="2"><span class="co"># [1] 23</span></a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">sum</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">5</span>), <span class="dt">na.rm=</span>T) <span class="co"># na.rm=T - не обращать внимание на пропуски при вычислении. Применяется во многих подобных функциях</span></a>
+<a class="sourceLine" id="cb67-2" title="2"><span class="co"># [1] 15</span></a></code></pre></div>
 <p><strong><code>mean(x)</code></strong> - среднее</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">mean</span>(<span class="op">-</span><span class="dv">10</span><span class="op">:</span><span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb57-2" title="2"><span class="co"># [1] 1</span></a></code></pre></div>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">5</span>), <span class="dt">na.rm=</span>T)</a>
-<a class="sourceLine" id="cb58-2" title="2"><span class="co"># [1] 3</span></a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">mean</span>(<span class="op">-</span><span class="dv">10</span><span class="op">:</span><span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb68-2" title="2"><span class="co"># [1] 1</span></a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">5</span>), <span class="dt">na.rm=</span>T)</a>
+<a class="sourceLine" id="cb69-2" title="2"><span class="co"># [1] 3</span></a></code></pre></div>
 <p><strong><code>min(x)</code></strong>, <strong><code>max(x)</code></strong> - минимум, максимум</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1"><span class="kw">min</span>(<span class="op">-</span><span class="dv">10</span><span class="op">:</span><span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb59-2" title="2"><span class="co"># [1] -10</span></a></code></pre></div>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">max</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">5</span>), <span class="dt">na.rm=</span>T)</a>
-<a class="sourceLine" id="cb60-2" title="2"><span class="co"># [1] 5</span></a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">min</span>(<span class="op">-</span><span class="dv">10</span><span class="op">:</span><span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb70-2" title="2"><span class="co"># [1] -10</span></a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">max</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">5</span>), <span class="dt">na.rm=</span>T)</a>
+<a class="sourceLine" id="cb71-2" title="2"><span class="co"># [1] 5</span></a></code></pre></div>
 <p><strong><code>log(x, base)</code></strong> - логарифм <em>x</em> по основанию <em>base</em></p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="kw">log</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) <span class="co"># без указания основания берётся натуральный логарифм</span></a>
-<a class="sourceLine" id="cb61-2" title="2"><span class="co"># [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379</span></a></code></pre></div>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="kw">log</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb62-2" title="2"><span class="co"># [1] 0.0000000 0.4306766 0.6826062 0.8613531 1.0000000</span></a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">log</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) <span class="co"># без указания основания берётся натуральный логарифм</span></a>
+<a class="sourceLine" id="cb72-2" title="2"><span class="co"># [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379</span></a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">log</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb73-2" title="2"><span class="co"># [1] 0.0000000 0.4306766 0.6826062 0.8613531 1.0000000</span></a></code></pre></div>
 <p><strong><code>cor(x, y)</code></strong> - парный коэффициент корреляции между двумя векторами</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="kw">cor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>))</a>
-<a class="sourceLine" id="cb63-2" title="2"><span class="co"># [1] 0.9486833</span></a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">cor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb74-2" title="2"><span class="co"># [1] 0.9486833</span></a></code></pre></div>
 <p><strong><code>var(x)</code></strong> - дисперсия<br />
 <strong><code>sd(x)</code></strong> - стандартное отклонение<br />
 <strong><code>median(x)</code></strong> - медиана</p>
 <p><strong>Работа с данными</strong></p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">dt2 &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">col1=</span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;f&#39;</span>),</a>
-<a class="sourceLine" id="cb64-2" title="2">                  <span class="dt">col2=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1">dt2 &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">col1=</span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;f&#39;</span>),</a>
+<a class="sourceLine" id="cb75-2" title="2">                  <span class="dt">col2=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>))</a></code></pre></div>
 <p><strong><code>head(x, n)</code></strong>, <strong><code>tail(x, n)</code></strong> - первые или последние <em>n</em> элементов объекта <em>x</em> (по умолчанию <em>n</em> = 6)</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">head</span>(dt2, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb65-2" title="2"><span class="co">#    col1 col2</span></a>
-<a class="sourceLine" id="cb65-3" title="3"><span class="co"># 1:    a    1</span></a>
-<a class="sourceLine" id="cb65-4" title="4"><span class="co"># 2:    b    2</span></a>
-<a class="sourceLine" id="cb65-5" title="5"><span class="co"># 3:    c    3</span></a></code></pre></div>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="kw">tail</span>(dt2,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb66-2" title="2"><span class="co">#    col1 col2</span></a>
-<a class="sourceLine" id="cb66-3" title="3"><span class="co"># 1:    d    4</span></a>
-<a class="sourceLine" id="cb66-4" title="4"><span class="co"># 2:    f    3</span></a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="kw">head</span>(dt2, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb76-2" title="2"><span class="co">#    col1 col2</span></a>
+<a class="sourceLine" id="cb76-3" title="3"><span class="co"># 1:    a    1</span></a>
+<a class="sourceLine" id="cb76-4" title="4"><span class="co"># 2:    b    2</span></a>
+<a class="sourceLine" id="cb76-5" title="5"><span class="co"># 3:    c    3</span></a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">tail</span>(dt2,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb77-2" title="2"><span class="co">#    col1 col2</span></a>
+<a class="sourceLine" id="cb77-3" title="3"><span class="co"># 1:    d    4</span></a>
+<a class="sourceLine" id="cb77-4" title="4"><span class="co"># 2:    f    3</span></a></code></pre></div>
 <p><strong><code>summary(x)</code></strong> - вывод основных параметров объекта</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">summary</span>(dt2)</a>
-<a class="sourceLine" id="cb67-2" title="2"><span class="co">#      col1                col2      </span></a>
-<a class="sourceLine" id="cb67-3" title="3"><span class="co">#  Length:7           Min.   :1.000  </span></a>
-<a class="sourceLine" id="cb67-4" title="4"><span class="co">#  Class :character   1st Qu.:2.500  </span></a>
-<a class="sourceLine" id="cb67-5" title="5"><span class="co">#  Mode  :character   Median :3.000  </span></a>
-<a class="sourceLine" id="cb67-6" title="6"><span class="co">#                     Mean   :3.429  </span></a>
-<a class="sourceLine" id="cb67-7" title="7"><span class="co">#                     3rd Qu.:4.500  </span></a>
-<a class="sourceLine" id="cb67-8" title="8"><span class="co">#                     Max.   :6.000</span></a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">summary</span>(dt2)</a>
+<a class="sourceLine" id="cb78-2" title="2"><span class="co">#      col1                col2      </span></a>
+<a class="sourceLine" id="cb78-3" title="3"><span class="co">#  Length:7           Min.   :1.000  </span></a>
+<a class="sourceLine" id="cb78-4" title="4"><span class="co">#  Class :character   1st Qu.:2.500  </span></a>
+<a class="sourceLine" id="cb78-5" title="5"><span class="co">#  Mode  :character   Median :3.000  </span></a>
+<a class="sourceLine" id="cb78-6" title="6"><span class="co">#                     Mean   :3.429  </span></a>
+<a class="sourceLine" id="cb78-7" title="7"><span class="co">#                     3rd Qu.:4.500  </span></a>
+<a class="sourceLine" id="cb78-8" title="8"><span class="co">#                     Max.   :6.000</span></a></code></pre></div>
 <p><strong><code>length()</code></strong> - длина объекта</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">length</span>(dt2[,col2])</a>
-<a class="sourceLine" id="cb68-2" title="2"><span class="co"># [1] 7</span></a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="kw">length</span>(dt2[,col2])</a>
+<a class="sourceLine" id="cb79-2" title="2"><span class="co"># [1] 7</span></a></code></pre></div>
 <p><strong><code>nrow()</code></strong>, <strong><code>ncol()</code></strong> - число строк и число стобцов</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">c</span>(<span class="kw">nrow</span>(dt2), <span class="kw">ncol</span>(dt2))</a>
-<a class="sourceLine" id="cb69-2" title="2"><span class="co"># [1] 7 2</span></a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">c</span>(<span class="kw">nrow</span>(dt2), <span class="kw">ncol</span>(dt2))</a>
+<a class="sourceLine" id="cb80-2" title="2"><span class="co"># [1] 7 2</span></a></code></pre></div>
 <p><strong><code>sort()</code></strong> - отсортировать вектор (по умолчанию - по возрастанию)</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">sort</span>(dt2[,col2])</a>
-<a class="sourceLine" id="cb70-2" title="2"><span class="co"># [1] 1 2 3 3 4 5 6</span></a></code></pre></div>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">sort</span>(dt2[,col2], <span class="dt">decreasing =</span> T) <span class="co"># по убыванию</span></a>
-<a class="sourceLine" id="cb71-2" title="2"><span class="co"># [1] 6 5 4 3 3 2 1</span></a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">sort</span>(dt2[,col2])</a>
+<a class="sourceLine" id="cb81-2" title="2"><span class="co"># [1] 1 2 3 3 4 5 6</span></a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw">sort</span>(dt2[,col2], <span class="dt">decreasing =</span> T) <span class="co"># по убыванию</span></a>
+<a class="sourceLine" id="cb82-2" title="2"><span class="co"># [1] 6 5 4 3 3 2 1</span></a></code></pre></div>
 <p><strong><code>order()</code></strong> - возвращает индексы элементов в порядке возрастания</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">order</span>(dt2[,col2])</a>
-<a class="sourceLine" id="cb72-2" title="2"><span class="co"># [1] 1 2 3 7 6 5 4</span></a></code></pre></div>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">order</span>(dt2[,col2], <span class="dt">decreasing =</span> T)  <span class="co"># в порядке убывания</span></a>
-<a class="sourceLine" id="cb73-2" title="2"><span class="co"># [1] 4 5 6 3 7 2 1</span></a></code></pre></div>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">dt2[<span class="kw">order</span>(col2, <span class="dt">decreasing =</span> T)]   <span class="co"># передаём индексы таблице - получаем отсортированную по убыванию col2</span></a>
-<a class="sourceLine" id="cb74-2" title="2"><span class="co">#    col1 col2</span></a>
-<a class="sourceLine" id="cb74-3" title="3"><span class="co"># 1:    d    6</span></a>
-<a class="sourceLine" id="cb74-4" title="4"><span class="co"># 2:    d    5</span></a>
-<a class="sourceLine" id="cb74-5" title="5"><span class="co"># 3:    d    4</span></a>
-<a class="sourceLine" id="cb74-6" title="6"><span class="co"># 4:    c    3</span></a>
-<a class="sourceLine" id="cb74-7" title="7"><span class="co"># 5:    f    3</span></a>
-<a class="sourceLine" id="cb74-8" title="8"><span class="co"># 6:    b    2</span></a>
-<a class="sourceLine" id="cb74-9" title="9"><span class="co"># 7:    a    1</span></a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">order</span>(dt2[,col2])</a>
+<a class="sourceLine" id="cb83-2" title="2"><span class="co"># [1] 1 2 3 7 6 5 4</span></a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="kw">order</span>(dt2[,col2], <span class="dt">decreasing =</span> T)  <span class="co"># в порядке убывания</span></a>
+<a class="sourceLine" id="cb84-2" title="2"><span class="co"># [1] 4 5 6 3 7 2 1</span></a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">dt2[<span class="kw">order</span>(col2, <span class="dt">decreasing =</span> T)]   <span class="co"># передаём индексы таблице - получаем отсортированную по убыванию col2</span></a>
+<a class="sourceLine" id="cb85-2" title="2"><span class="co">#    col1 col2</span></a>
+<a class="sourceLine" id="cb85-3" title="3"><span class="co"># 1:    d    6</span></a>
+<a class="sourceLine" id="cb85-4" title="4"><span class="co"># 2:    d    5</span></a>
+<a class="sourceLine" id="cb85-5" title="5"><span class="co"># 3:    d    4</span></a>
+<a class="sourceLine" id="cb85-6" title="6"><span class="co"># 4:    c    3</span></a>
+<a class="sourceLine" id="cb85-7" title="7"><span class="co"># 5:    f    3</span></a>
+<a class="sourceLine" id="cb85-8" title="8"><span class="co"># 6:    b    2</span></a>
+<a class="sourceLine" id="cb85-9" title="9"><span class="co"># 7:    a    1</span></a></code></pre></div>
 <p><strong><code>table(x)</code></strong> - возвращает таблицу с уникальными значениями вектора x и числом их вхождений</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">table</span>(dt2[,col1])</a>
-<a class="sourceLine" id="cb75-2" title="2"><span class="co"># </span></a>
-<a class="sourceLine" id="cb75-3" title="3"><span class="co"># a b c d f </span></a>
-<a class="sourceLine" id="cb75-4" title="4"><span class="co"># 1 1 1 3 1</span></a></code></pre></div>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="kw">sort</span>(<span class="kw">table</span>(dt2[,col1]), <span class="dt">decreasing =</span> T)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]  <span class="co"># сортируем по убыванию и берём топ 3 значений</span></a>
-<a class="sourceLine" id="cb76-2" title="2"><span class="co"># </span></a>
-<a class="sourceLine" id="cb76-3" title="3"><span class="co"># d a b </span></a>
-<a class="sourceLine" id="cb76-4" title="4"><span class="co"># 3 1 1</span></a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="kw">table</span>(dt2[,col1])</a>
+<a class="sourceLine" id="cb86-2" title="2"><span class="co"># </span></a>
+<a class="sourceLine" id="cb86-3" title="3"><span class="co"># a b c d f </span></a>
+<a class="sourceLine" id="cb86-4" title="4"><span class="co"># 1 1 1 3 1</span></a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="kw">sort</span>(<span class="kw">table</span>(dt2[,col1]), <span class="dt">decreasing =</span> T)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]  <span class="co"># сортируем по убыванию и берём топ 3 значений</span></a>
+<a class="sourceLine" id="cb87-2" title="2"><span class="co"># </span></a>
+<a class="sourceLine" id="cb87-3" title="3"><span class="co"># d a b </span></a>
+<a class="sourceLine" id="cb87-4" title="4"><span class="co"># 3 1 1</span></a></code></pre></div>
 <p><strong><code>unique()</code></strong> - возвращает объект с уникальными значениями (без повторений)</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">unique</span>(dt2[,col2])</a>
-<a class="sourceLine" id="cb77-2" title="2"><span class="co"># [1] 1 2 3 6 5 4</span></a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw">unique</span>(dt2[,col2])</a>
+<a class="sourceLine" id="cb88-2" title="2"><span class="co"># [1] 1 2 3 6 5 4</span></a></code></pre></div>
 <p><strong><code>apply()</code></strong>,<strong><code>lapply()</code></strong>, <strong><code>sapply()</code></strong> - применение функции к каждому элементу объекта. <code>apply</code> применяется к матрицам, таблицам; <code>lapply</code> возвращает список; sapply возвращает вектор</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="cf">function</span>(x)x<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb78-2" title="2"><span class="co"># [[1]]</span></a>
-<a class="sourceLine" id="cb78-3" title="3"><span class="co"># [1] 1</span></a>
-<a class="sourceLine" id="cb78-4" title="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb78-5" title="5"><span class="co"># [[2]]</span></a>
-<a class="sourceLine" id="cb78-6" title="6"><span class="co"># [1] 4</span></a>
-<a class="sourceLine" id="cb78-7" title="7"><span class="co"># </span></a>
-<a class="sourceLine" id="cb78-8" title="8"><span class="co"># [[3]]</span></a>
-<a class="sourceLine" id="cb78-9" title="9"><span class="co"># [1] 9</span></a>
-<a class="sourceLine" id="cb78-10" title="10"><span class="co"># </span></a>
-<a class="sourceLine" id="cb78-11" title="11"><span class="co"># [[4]]</span></a>
-<a class="sourceLine" id="cb78-12" title="12"><span class="co"># [1] 16</span></a>
-<a class="sourceLine" id="cb78-13" title="13"><span class="co"># </span></a>
-<a class="sourceLine" id="cb78-14" title="14"><span class="co"># [[5]]</span></a>
-<a class="sourceLine" id="cb78-15" title="15"><span class="co"># [1] 25</span></a></code></pre></div>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="cf">function</span>(x)x<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb79-2" title="2"><span class="co"># [1]  1  4  9 16 25</span></a></code></pre></div>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">apply</span>(dt2, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="cf">function</span>(x)<span class="kw">length</span>(<span class="kw">unique</span>(x)))  <span class="co"># количество уникальных значений по столбцам. Чтобы применить функцию к строкам, MARGIN = 1</span></a>
-<a class="sourceLine" id="cb80-2" title="2"><span class="co"># col1 col2 </span></a>
-<a class="sourceLine" id="cb80-3" title="3"><span class="co">#    5    6</span></a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="cf">function</span>(x)x<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb89-2" title="2"><span class="co"># [[1]]</span></a>
+<a class="sourceLine" id="cb89-3" title="3"><span class="co"># [1] 1</span></a>
+<a class="sourceLine" id="cb89-4" title="4"><span class="co"># </span></a>
+<a class="sourceLine" id="cb89-5" title="5"><span class="co"># [[2]]</span></a>
+<a class="sourceLine" id="cb89-6" title="6"><span class="co"># [1] 4</span></a>
+<a class="sourceLine" id="cb89-7" title="7"><span class="co"># </span></a>
+<a class="sourceLine" id="cb89-8" title="8"><span class="co"># [[3]]</span></a>
+<a class="sourceLine" id="cb89-9" title="9"><span class="co"># [1] 9</span></a>
+<a class="sourceLine" id="cb89-10" title="10"><span class="co"># </span></a>
+<a class="sourceLine" id="cb89-11" title="11"><span class="co"># [[4]]</span></a>
+<a class="sourceLine" id="cb89-12" title="12"><span class="co"># [1] 16</span></a>
+<a class="sourceLine" id="cb89-13" title="13"><span class="co"># </span></a>
+<a class="sourceLine" id="cb89-14" title="14"><span class="co"># [[5]]</span></a>
+<a class="sourceLine" id="cb89-15" title="15"><span class="co"># [1] 25</span></a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="cf">function</span>(x)x<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb90-2" title="2"><span class="co"># [1]  1  4  9 16 25</span></a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">apply</span>(dt2, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="cf">function</span>(x)<span class="kw">length</span>(<span class="kw">unique</span>(x)))  <span class="co"># количество уникальных значений по столбцам. Чтобы применить функцию к строкам, MARGIN = 1</span></a>
+<a class="sourceLine" id="cb91-2" title="2"><span class="co"># col1 col2 </span></a>
+<a class="sourceLine" id="cb91-3" title="3"><span class="co">#    5    6</span></a></code></pre></div>
 <p><strong><code>rbind()</code></strong>, <strong><code>cbind()</code></strong> - соединить несколько таблиц по строкам, столбцам (<em>r-</em> для row, <em>c-</em> для column)</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">rbind</span>(dt2, <span class="kw">data.table</span>(<span class="dt">col1=</span><span class="st">&#39;A&#39;</span>, <span class="dt">col2=</span><span class="dv">10</span>)) <span class="co"># названия столбцов в таблицах должны соответствовать друг другу</span></a>
-<a class="sourceLine" id="cb81-2" title="2"><span class="co">#    col1 col2</span></a>
-<a class="sourceLine" id="cb81-3" title="3"><span class="co"># 1:    a    1</span></a>
-<a class="sourceLine" id="cb81-4" title="4"><span class="co"># 2:    b    2</span></a>
-<a class="sourceLine" id="cb81-5" title="5"><span class="co"># 3:    c    3</span></a>
-<a class="sourceLine" id="cb81-6" title="6"><span class="co"># 4:    d    6</span></a>
-<a class="sourceLine" id="cb81-7" title="7"><span class="co"># 5:    d    5</span></a>
-<a class="sourceLine" id="cb81-8" title="8"><span class="co"># 6:    d    4</span></a>
-<a class="sourceLine" id="cb81-9" title="9"><span class="co"># 7:    f    3</span></a>
-<a class="sourceLine" id="cb81-10" title="10"><span class="co"># 8:    A   10</span></a></code></pre></div>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw">cbind</span>(dt2, <span class="kw">data.table</span>(<span class="dt">col3=</span><span class="dv">11</span><span class="op">:</span><span class="dv">17</span>))</a>
-<a class="sourceLine" id="cb82-2" title="2"><span class="co">#    col1 col2 col3</span></a>
-<a class="sourceLine" id="cb82-3" title="3"><span class="co"># 1:    a    1   11</span></a>
-<a class="sourceLine" id="cb82-4" title="4"><span class="co"># 2:    b    2   12</span></a>
-<a class="sourceLine" id="cb82-5" title="5"><span class="co"># 3:    c    3   13</span></a>
-<a class="sourceLine" id="cb82-6" title="6"><span class="co"># 4:    d    6   14</span></a>
-<a class="sourceLine" id="cb82-7" title="7"><span class="co"># 5:    d    5   15</span></a>
-<a class="sourceLine" id="cb82-8" title="8"><span class="co"># 6:    d    4   16</span></a>
-<a class="sourceLine" id="cb82-9" title="9"><span class="co"># 7:    f    3   17</span></a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="kw">rbind</span>(dt2, <span class="kw">data.table</span>(<span class="dt">col1=</span><span class="st">&#39;A&#39;</span>, <span class="dt">col2=</span><span class="dv">10</span>)) <span class="co"># названия столбцов в таблицах должны соответствовать друг другу</span></a>
+<a class="sourceLine" id="cb92-2" title="2"><span class="co">#    col1 col2</span></a>
+<a class="sourceLine" id="cb92-3" title="3"><span class="co"># 1:    a    1</span></a>
+<a class="sourceLine" id="cb92-4" title="4"><span class="co"># 2:    b    2</span></a>
+<a class="sourceLine" id="cb92-5" title="5"><span class="co"># 3:    c    3</span></a>
+<a class="sourceLine" id="cb92-6" title="6"><span class="co"># 4:    d    6</span></a>
+<a class="sourceLine" id="cb92-7" title="7"><span class="co"># 5:    d    5</span></a>
+<a class="sourceLine" id="cb92-8" title="8"><span class="co"># 6:    d    4</span></a>
+<a class="sourceLine" id="cb92-9" title="9"><span class="co"># 7:    f    3</span></a>
+<a class="sourceLine" id="cb92-10" title="10"><span class="co"># 8:    A   10</span></a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">cbind</span>(dt2, <span class="kw">data.table</span>(<span class="dt">col3=</span><span class="dv">11</span><span class="op">:</span><span class="dv">17</span>))</a>
+<a class="sourceLine" id="cb93-2" title="2"><span class="co">#    col1 col2 col3</span></a>
+<a class="sourceLine" id="cb93-3" title="3"><span class="co"># 1:    a    1   11</span></a>
+<a class="sourceLine" id="cb93-4" title="4"><span class="co"># 2:    b    2   12</span></a>
+<a class="sourceLine" id="cb93-5" title="5"><span class="co"># 3:    c    3   13</span></a>
+<a class="sourceLine" id="cb93-6" title="6"><span class="co"># 4:    d    6   14</span></a>
+<a class="sourceLine" id="cb93-7" title="7"><span class="co"># 5:    d    5   15</span></a>
+<a class="sourceLine" id="cb93-8" title="8"><span class="co"># 6:    d    4   16</span></a>
+<a class="sourceLine" id="cb93-9" title="9"><span class="co"># 7:    f    3   17</span></a></code></pre></div>
 <p><strong><code>merge()</code></strong> - объединение двух таблиц по общему ключу<br />
 Параметр <strong><em><code>by</code></em></strong> указывает на наименование столбца с ключами.<br />
 Если столбцы с ключами для первой и второй таблицы имеют разные названия, они перечисляются отдельно параметрами <strong><em>by.x</em></strong> и <strong><em>by.y</em></strong> для первой и второй таблицы соответственно.</p>
 <p>По умолчанию в результате остаются только строки, имеющие общие ключи в обеих таблицах:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">merge</span>(dt2,</a>
-<a class="sourceLine" id="cb83-2" title="2">      <span class="kw">data.table</span>(<span class="dt">col1=</span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;f&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;A&#39;</span>), <span class="dt">col3=</span><span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">20</span>)), <span class="co"># создали новую таблицу</span></a>
-<a class="sourceLine" id="cb83-3" title="3">      <span class="dt">by=</span><span class="st">&#39;col1&#39;</span>)  <span class="co"># по колонке col1</span></a>
-<a class="sourceLine" id="cb83-4" title="4"><span class="co">#    col1 col2 col3</span></a>
-<a class="sourceLine" id="cb83-5" title="5"><span class="co"># 1:    a    1   11</span></a>
-<a class="sourceLine" id="cb83-6" title="6"><span class="co"># 2:    d    6   15</span></a>
-<a class="sourceLine" id="cb83-7" title="7"><span class="co"># 3:    d    5   15</span></a>
-<a class="sourceLine" id="cb83-8" title="8"><span class="co"># 4:    d    4   15</span></a>
-<a class="sourceLine" id="cb83-9" title="9"><span class="co"># 5:    f    3   13</span></a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="kw">merge</span>(dt2,</a>
+<a class="sourceLine" id="cb94-2" title="2">      <span class="kw">data.table</span>(<span class="dt">col1=</span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;f&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;A&#39;</span>), <span class="dt">col3=</span><span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">20</span>)), <span class="co"># создали новую таблицу</span></a>
+<a class="sourceLine" id="cb94-3" title="3">      <span class="dt">by=</span><span class="st">&#39;col1&#39;</span>)  <span class="co"># по колонке col1</span></a>
+<a class="sourceLine" id="cb94-4" title="4"><span class="co">#    col1 col2 col3</span></a>
+<a class="sourceLine" id="cb94-5" title="5"><span class="co"># 1:    a    1   11</span></a>
+<a class="sourceLine" id="cb94-6" title="6"><span class="co"># 2:    d    6   15</span></a>
+<a class="sourceLine" id="cb94-7" title="7"><span class="co"># 3:    d    5   15</span></a>
+<a class="sourceLine" id="cb94-8" title="8"><span class="co"># 4:    d    4   15</span></a>
+<a class="sourceLine" id="cb94-9" title="9"><span class="co"># 5:    f    3   13</span></a></code></pre></div>
 <p>Если нужно сохранить строки первой или второй таблицы, добавляются параметры <strong>all.x=T</strong> или <strong>all.y=T</strong>. На месте, где нет совпадений, появятся пропуски <em>NA</em></p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="kw">merge</span>(dt2,</a>
-<a class="sourceLine" id="cb84-2" title="2">      <span class="kw">data.table</span>(<span class="dt">col1=</span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;f&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;A&#39;</span>), <span class="dt">col3=</span><span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">20</span>)), </a>
-<a class="sourceLine" id="cb84-3" title="3">      <span class="dt">by=</span><span class="st">&#39;col1&#39;</span>,</a>
-<a class="sourceLine" id="cb84-4" title="4">      <span class="dt">all.y=</span>T</a>
-<a class="sourceLine" id="cb84-5" title="5">      )</a>
-<a class="sourceLine" id="cb84-6" title="6"><span class="co">#    col1 col2 col3</span></a>
-<a class="sourceLine" id="cb84-7" title="7"><span class="co"># 1:    A   NA   20</span></a>
-<a class="sourceLine" id="cb84-8" title="8"><span class="co"># 2:    a    1   11</span></a>
-<a class="sourceLine" id="cb84-9" title="9"><span class="co"># 3:    d    6   15</span></a>
-<a class="sourceLine" id="cb84-10" title="10"><span class="co"># 4:    d    5   15</span></a>
-<a class="sourceLine" id="cb84-11" title="11"><span class="co"># 5:    d    4   15</span></a>
-<a class="sourceLine" id="cb84-12" title="12"><span class="co"># 6:    f    3   13</span></a></code></pre></div>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="kw">merge</span>(dt2,</a>
-<a class="sourceLine" id="cb85-2" title="2">      <span class="kw">data.table</span>(<span class="dt">col1=</span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;f&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;A&#39;</span>), <span class="dt">col3=</span><span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">20</span>)), </a>
-<a class="sourceLine" id="cb85-3" title="3">      <span class="dt">by=</span><span class="st">&#39;col1&#39;</span>,</a>
-<a class="sourceLine" id="cb85-4" title="4">      <span class="dt">all.x=</span>T,</a>
-<a class="sourceLine" id="cb85-5" title="5">      <span class="dt">all.y=</span>T</a>
-<a class="sourceLine" id="cb85-6" title="6">      )</a>
-<a class="sourceLine" id="cb85-7" title="7"><span class="co">#    col1 col2 col3</span></a>
-<a class="sourceLine" id="cb85-8" title="8"><span class="co"># 1:    A   NA   20</span></a>
-<a class="sourceLine" id="cb85-9" title="9"><span class="co"># 2:    a    1   11</span></a>
-<a class="sourceLine" id="cb85-10" title="10"><span class="co"># 3:    b    2   NA</span></a>
-<a class="sourceLine" id="cb85-11" title="11"><span class="co"># 4:    c    3   NA</span></a>
-<a class="sourceLine" id="cb85-12" title="12"><span class="co"># 5:    d    6   15</span></a>
-<a class="sourceLine" id="cb85-13" title="13"><span class="co"># 6:    d    5   15</span></a>
-<a class="sourceLine" id="cb85-14" title="14"><span class="co"># 7:    d    4   15</span></a>
-<a class="sourceLine" id="cb85-15" title="15"><span class="co"># 8:    f    3   13</span></a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="kw">merge</span>(dt2,</a>
+<a class="sourceLine" id="cb95-2" title="2">      <span class="kw">data.table</span>(<span class="dt">col1=</span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;f&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;A&#39;</span>), <span class="dt">col3=</span><span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">20</span>)), </a>
+<a class="sourceLine" id="cb95-3" title="3">      <span class="dt">by=</span><span class="st">&#39;col1&#39;</span>,</a>
+<a class="sourceLine" id="cb95-4" title="4">      <span class="dt">all.y=</span>T</a>
+<a class="sourceLine" id="cb95-5" title="5">      )</a>
+<a class="sourceLine" id="cb95-6" title="6"><span class="co">#    col1 col2 col3</span></a>
+<a class="sourceLine" id="cb95-7" title="7"><span class="co"># 1:    A   NA   20</span></a>
+<a class="sourceLine" id="cb95-8" title="8"><span class="co"># 2:    a    1   11</span></a>
+<a class="sourceLine" id="cb95-9" title="9"><span class="co"># 3:    d    6   15</span></a>
+<a class="sourceLine" id="cb95-10" title="10"><span class="co"># 4:    d    5   15</span></a>
+<a class="sourceLine" id="cb95-11" title="11"><span class="co"># 5:    d    4   15</span></a>
+<a class="sourceLine" id="cb95-12" title="12"><span class="co"># 6:    f    3   13</span></a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">merge</span>(dt2,</a>
+<a class="sourceLine" id="cb96-2" title="2">      <span class="kw">data.table</span>(<span class="dt">col1=</span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;f&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;A&#39;</span>), <span class="dt">col3=</span><span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">20</span>)), </a>
+<a class="sourceLine" id="cb96-3" title="3">      <span class="dt">by=</span><span class="st">&#39;col1&#39;</span>,</a>
+<a class="sourceLine" id="cb96-4" title="4">      <span class="dt">all.x=</span>T,</a>
+<a class="sourceLine" id="cb96-5" title="5">      <span class="dt">all.y=</span>T</a>
+<a class="sourceLine" id="cb96-6" title="6">      )</a>
+<a class="sourceLine" id="cb96-7" title="7"><span class="co">#    col1 col2 col3</span></a>
+<a class="sourceLine" id="cb96-8" title="8"><span class="co"># 1:    A   NA   20</span></a>
+<a class="sourceLine" id="cb96-9" title="9"><span class="co"># 2:    a    1   11</span></a>
+<a class="sourceLine" id="cb96-10" title="10"><span class="co"># 3:    b    2   NA</span></a>
+<a class="sourceLine" id="cb96-11" title="11"><span class="co"># 4:    c    3   NA</span></a>
+<a class="sourceLine" id="cb96-12" title="12"><span class="co"># 5:    d    6   15</span></a>
+<a class="sourceLine" id="cb96-13" title="13"><span class="co"># 6:    d    5   15</span></a>
+<a class="sourceLine" id="cb96-14" title="14"><span class="co"># 7:    d    4   15</span></a>
+<a class="sourceLine" id="cb96-15" title="15"><span class="co"># 8:    f    3   13</span></a></code></pre></div>
+</div>
+<div id="функция-lm-для-моделей-регрессии" class="section level2">
+<h2><span class="header-section-number">3.3</span> Функция lm() для моделей регрессии</h2>
+<p>Для построения линейных моделей как парной, так и множественной регрессии, можно использовать функцию <code>lm()</code><br />
+Основные аргументы функции:<br />
+- <code>data</code> - таблица или список, содержащие исходныме данные<br />
+- <code>formula</code> - формула, описывающая общий вид модели. Записывается в виде: <code>имя зависимой переменной ~ разделённые знаком + имена независимых переменных</code></p>
+<p>Например, для модели <span class="math inline">\(y_{i}=\theta _{0}+\theta _{1}x_{i1}+\theta _{2}x_{i2}+\varepsilon _{i}\)</span> фурмула будет иметь вид <code>y ~ x1 + x2</code> (где <code>y</code>, <code>x1</code>, <code>x2</code> - имена переменных в соответствии с исходными данными)</p>
+<p>Построим линейные модели для следующего набора данных:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">dt3 &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">y  =</span> <span class="kw">c</span>(<span class="fl">60.323</span>,<span class="fl">61.122</span>,<span class="fl">60.171</span>,<span class="fl">61.187</span>,<span class="fl">63.221</span>,<span class="fl">63.639</span>,<span class="fl">64.989</span>,<span class="fl">63.761</span>,<span class="fl">66.019</span>,<span class="fl">67.857</span>,<span class="fl">68.169</span>,<span class="fl">66.513</span>,<span class="fl">68.655</span>,<span class="fl">69.564</span>,<span class="fl">69.331</span>,<span class="fl">70.551</span>),</a>
+<a class="sourceLine" id="cb97-2" title="2">           <span class="dt">x1 =</span> <span class="kw">c</span>(<span class="dv">83</span>,<span class="fl">88.5</span>,<span class="fl">88.2</span>,<span class="fl">89.5</span>,<span class="fl">96.2</span>,<span class="fl">98.1</span>,<span class="dv">99</span>,<span class="dv">100</span>,<span class="fl">101.2</span>,<span class="fl">104.6</span>,<span class="fl">108.4</span>,<span class="fl">110.8</span>,<span class="fl">112.6</span>,<span class="fl">114.2</span>,<span class="fl">115.7</span>,<span class="fl">116.9</span>),</a>
+<a class="sourceLine" id="cb97-3" title="3">           <span class="dt">x2 =</span> <span class="kw">c</span>(<span class="fl">107.608</span>,<span class="fl">108.632</span>,<span class="fl">109.773</span>,<span class="fl">110.929</span>,<span class="fl">112.075</span>,<span class="fl">113.27</span>,<span class="fl">115.094</span>,<span class="fl">116.219</span>,<span class="fl">117.388</span>,<span class="fl">118.734</span>,<span class="fl">120.445</span>,<span class="fl">121.95</span>,<span class="fl">123.366</span>,<span class="fl">125.368</span>,<span class="fl">127.852</span>,<span class="fl">130.081</span>),</a>
+<a class="sourceLine" id="cb97-4" title="4">           <span class="dt">x3=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&#39;a&#39;</span>, <span class="dv">8</span>),<span class="kw">rep</span>(<span class="st">&#39;b&#39;</span>, <span class="dv">8</span>))</a>
+<a class="sourceLine" id="cb97-5" title="5">           )</a>
+<a class="sourceLine" id="cb97-6" title="6">dt3</a>
+<a class="sourceLine" id="cb97-7" title="7"><span class="co">#          y    x1      x2 x3</span></a>
+<a class="sourceLine" id="cb97-8" title="8"><span class="co">#  1: 60.323  83.0 107.608  a</span></a>
+<a class="sourceLine" id="cb97-9" title="9"><span class="co">#  2: 61.122  88.5 108.632  a</span></a>
+<a class="sourceLine" id="cb97-10" title="10"><span class="co">#  3: 60.171  88.2 109.773  a</span></a>
+<a class="sourceLine" id="cb97-11" title="11"><span class="co">#  4: 61.187  89.5 110.929  a</span></a>
+<a class="sourceLine" id="cb97-12" title="12"><span class="co">#  5: 63.221  96.2 112.075  a</span></a>
+<a class="sourceLine" id="cb97-13" title="13"><span class="co">#  6: 63.639  98.1 113.270  a</span></a>
+<a class="sourceLine" id="cb97-14" title="14"><span class="co">#  7: 64.989  99.0 115.094  a</span></a>
+<a class="sourceLine" id="cb97-15" title="15"><span class="co">#  8: 63.761 100.0 116.219  a</span></a>
+<a class="sourceLine" id="cb97-16" title="16"><span class="co">#  9: 66.019 101.2 117.388  b</span></a>
+<a class="sourceLine" id="cb97-17" title="17"><span class="co"># 10: 67.857 104.6 118.734  b</span></a>
+<a class="sourceLine" id="cb97-18" title="18"><span class="co"># 11: 68.169 108.4 120.445  b</span></a>
+<a class="sourceLine" id="cb97-19" title="19"><span class="co"># 12: 66.513 110.8 121.950  b</span></a>
+<a class="sourceLine" id="cb97-20" title="20"><span class="co"># 13: 68.655 112.6 123.366  b</span></a>
+<a class="sourceLine" id="cb97-21" title="21"><span class="co"># 14: 69.564 114.2 125.368  b</span></a>
+<a class="sourceLine" id="cb97-22" title="22"><span class="co"># 15: 69.331 115.7 127.852  b</span></a>
+<a class="sourceLine" id="cb97-23" title="23"><span class="co"># 16: 70.551 116.9 130.081  b</span></a></code></pre></div>
+<p>Построим <strong>модель парной регрессии</strong> вида <span class="math inline">\(y_{i}=\theta _{0}+\theta _{1}x_{i}+\varepsilon _{i}\)</span>, результат занесем в переменную <code>lm1</code>:</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1">lm1 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> dt3, <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span>x1)</a>
+<a class="sourceLine" id="cb98-2" title="2"><span class="kw">class</span>(lm1)  <span class="co"># В результате выполнения функции был получен объект класса lm</span></a>
+<a class="sourceLine" id="cb98-3" title="3"><span class="co"># [1] &quot;lm&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">lm1</a>
+<a class="sourceLine" id="cb99-2" title="2"><span class="co"># </span></a>
+<a class="sourceLine" id="cb99-3" title="3"><span class="co"># Call:</span></a>
+<a class="sourceLine" id="cb99-4" title="4"><span class="co"># lm(formula = y ~ x1, data = dt3)</span></a>
+<a class="sourceLine" id="cb99-5" title="5"><span class="co"># </span></a>
+<a class="sourceLine" id="cb99-6" title="6"><span class="co"># Coefficients:</span></a>
+<a class="sourceLine" id="cb99-7" title="7"><span class="co"># (Intercept)           x1  </span></a>
+<a class="sourceLine" id="cb99-8" title="8"><span class="co">#      33.189        0.316</span></a></code></pre></div>
+<p>При простом вызове объекта отображается <code>Call</code> - какая функция с какими параметрами была использована для создания модели; <code>Coefficients:</code> - оценки параметров модели (<code>(Intercept)</code> соответствует <span class="math inline">\(\widehat{\theta }_{0}\)</span>, <code>x1</code> соответствует <span class="math inline">\(\widehat{\theta }_{1}\)</span>)<br />
+Для вывода расширенной сводной статистики (отчёта) по модели используется функция <code>summary()</code>:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="kw">summary</span>(lm1)</a>
+<a class="sourceLine" id="cb100-2" title="2"><span class="co"># </span></a>
+<a class="sourceLine" id="cb100-3" title="3"><span class="co"># Call:</span></a>
+<a class="sourceLine" id="cb100-4" title="4"><span class="co"># lm(formula = y ~ x1, data = dt3)</span></a>
+<a class="sourceLine" id="cb100-5" title="5"><span class="co"># </span></a>
+<a class="sourceLine" id="cb100-6" title="6"><span class="co"># Residuals:</span></a>
+<a class="sourceLine" id="cb100-7" title="7"><span class="co">#      Min       1Q   Median       3Q      Max </span></a>
+<a class="sourceLine" id="cb100-8" title="8"><span class="co"># -1.68522 -0.44820 -0.07106  0.57166  1.61777 </span></a>
+<a class="sourceLine" id="cb100-9" title="9"><span class="co"># </span></a>
+<a class="sourceLine" id="cb100-10" title="10"><span class="co"># Coefficients:</span></a>
+<a class="sourceLine" id="cb100-11" title="11"><span class="co">#             Estimate Std. Error t value Pr(&gt;|t|)    </span></a>
+<a class="sourceLine" id="cb100-12" title="12"><span class="co"># (Intercept) 33.18917    2.12919   15.59 3.06e-10 ***</span></a>
+<a class="sourceLine" id="cb100-13" title="13"><span class="co"># x1           0.31597    0.02083   15.17 4.39e-10 ***</span></a>
+<a class="sourceLine" id="cb100-14" title="14"><span class="co"># ---</span></a>
+<a class="sourceLine" id="cb100-15" title="15"><span class="co"># Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></a>
+<a class="sourceLine" id="cb100-16" title="16"><span class="co"># </span></a>
+<a class="sourceLine" id="cb100-17" title="17"><span class="co"># Residual standard error: 0.8706 on 14 degrees of freedom</span></a>
+<a class="sourceLine" id="cb100-18" title="18"><span class="co"># Multiple R-squared:  0.9426,  Adjusted R-squared:  0.9385 </span></a>
+<a class="sourceLine" id="cb100-19" title="19"><span class="co"># F-statistic: 230.1 on 1 and 14 DF,  p-value: 4.389e-10</span></a></code></pre></div>
+<p><code>Coefficients:</code> - наряду с оценками переметров выводит их стандартные ошибки (<code>Std. Error</code>); t-статистику для проверки основной гипотезы о равенстве параметра нулю (<code>t value</code>); p-значение (<code>Pr(&gt;|t|)</code>), можно интерпретировать как минимальное значение ошибки, с которой можно отклонить основной гипотезу, либо как уровень ошибки, при котором критическое (табличное) t будет равно расчётному.<br />
+<code>Residual standard error</code>
+<code>Multiple R-squared</code> - коэффициент детерминации<br />
+<code>F-statistic</code> - расчётное значение статистики Фишера<br />
+<code>p-value</code> - вероятность ошибки, при которой критическое значение F-статистики равно расчётному</p>
+<p>К объекту с моделью можно применить следующие полезные функции:<br />
+<strong><code>coef()</code></strong> - возвращает именованный вектор с оценками параметров модели</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1"><span class="kw">coef</span>(lm1)</a>
+<a class="sourceLine" id="cb101-2" title="2"><span class="co"># (Intercept)          x1 </span></a>
+<a class="sourceLine" id="cb101-3" title="3"><span class="co">#  33.1891734   0.3159661</span></a></code></pre></div>
+<p><strong><code>residuals()</code></strong> - возвращает вектор остатками модели</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="kw">residuals</span>(lm1)</a>
+<a class="sourceLine" id="cb102-2" title="2"><span class="co">#           1           2           3           4           5           6 </span></a>
+<a class="sourceLine" id="cb102-3" title="3"><span class="co">#  0.90864145 -0.03017202 -0.88638220 -0.28113811 -0.36411089 -0.54644645 </span></a>
+<a class="sourceLine" id="cb102-4" title="4"><span class="co">#           7           8           9          10          11          12 </span></a>
+<a class="sourceLine" id="cb102-5" title="5"><span class="co">#  0.51918407 -1.02478202  0.85405868  1.61777399  0.72910286 -1.68521575 </span></a>
+<a class="sourceLine" id="cb102-6" title="6"><span class="co">#          13          14          15          16 </span></a>
+<a class="sourceLine" id="cb102-7" title="7"><span class="co"># -0.11195471  0.29149956 -0.41544957  0.42539112</span></a></code></pre></div>
+<p><strong><code>fitted()</code></strong> - возвращает вектор с прогнозными значениями отклика</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="kw">fitted</span>(lm1)</a>
+<a class="sourceLine" id="cb103-2" title="2"><span class="co">#        1        2        3        4        5        6        7        8 </span></a>
+<a class="sourceLine" id="cb103-3" title="3"><span class="co"># 59.41436 61.15217 61.05738 61.46814 63.58511 64.18545 64.46982 64.78578 </span></a>
+<a class="sourceLine" id="cb103-4" title="4"><span class="co">#        9       10       11       12       13       14       15       16 </span></a>
+<a class="sourceLine" id="cb103-5" title="5"><span class="co"># 65.16494 66.23923 67.43990 68.19822 68.76695 69.27250 69.74645 70.12561</span></a></code></pre></div>
+<p><strong><code>predict()</code></strong> - рассчитывает прогноз для заданных значений независимых переменных. Аргумент <code>newdata</code> принимает таблицу со значениями регрессоров, по которым необходимо построить прогноз</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"></a>
+<a class="sourceLine" id="cb104-2" title="2"><span class="kw">predict</span>(lm1, <span class="dt">newdata =</span> <span class="kw">data.table</span>(<span class="dt">x1=</span><span class="kw">c</span>(<span class="dv">105</span>,<span class="dv">107</span>,<span class="dv">110</span>)))</a>
+<a class="sourceLine" id="cb104-3" title="3"><span class="co">#        1        2        3 </span></a>
+<a class="sourceLine" id="cb104-4" title="4"><span class="co"># 66.36561 66.99754 67.94544</span></a></code></pre></div>
+<p>С помощью <code>predict()</code> можно построить прогноз с доверительным интервалом, при вызове указав <code>interval="prediction"</code>. Уровень доверительной вероятности задаёт аргумент <code>level</code> (по умолчанию <code>level=0.95</code>). Результат - матрица, в которой столбец <code>fit</code> - прогноз, <code>lwr</code> - нижняя граница, <code>upr</code> - верхняя граница интервала</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"></a>
+<a class="sourceLine" id="cb105-2" title="2"><span class="kw">predict</span>(lm1, <span class="kw">data.table</span>(<span class="dt">x1=</span><span class="kw">c</span>(<span class="dv">105</span>,<span class="dv">107</span>,<span class="dv">110</span>)), <span class="dt">interval=</span><span class="st">&quot;prediction&quot;</span>)</a>
+<a class="sourceLine" id="cb105-3" title="3"><span class="co">#        fit      lwr      upr</span></a>
+<a class="sourceLine" id="cb105-4" title="4"><span class="co"># 1 66.36561 64.43518 68.29605</span></a>
+<a class="sourceLine" id="cb105-5" title="5"><span class="co"># 2 66.99754 65.05820 68.93689</span></a>
+<a class="sourceLine" id="cb105-6" title="6"><span class="co"># 3 67.94544 65.98516 69.90573</span></a></code></pre></div>
+<p><a href="https://www.youtube.com/watch?v=zY8h1qcKS4k"><strong>Видео Б.Демешева “МНК в R. Пример с машинами”</strong></a></p>
+<p>Построим <strong>модель множественный регрессии</strong> по всем независимым переменным (x3 - категориальная переменная).</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1">lm2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> dt3, <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span>x1<span class="op">+</span>x2<span class="op">+</span><span class="kw">factor</span>(x3)) <span class="co"># сменили класс x3 на factor. Делать обязательно, если х3 имеет класс integer.</span></a>
+<a class="sourceLine" id="cb106-2" title="2"><span class="kw">summary</span>(lm2)</a>
+<a class="sourceLine" id="cb106-3" title="3"><span class="co"># </span></a>
+<a class="sourceLine" id="cb106-4" title="4"><span class="co"># Call:</span></a>
+<a class="sourceLine" id="cb106-5" title="5"><span class="co"># lm(formula = y ~ x1 + x2 + factor(x3), data = dt3)</span></a>
+<a class="sourceLine" id="cb106-6" title="6"><span class="co"># </span></a>
+<a class="sourceLine" id="cb106-7" title="7"><span class="co"># Residuals:</span></a>
+<a class="sourceLine" id="cb106-8" title="8"><span class="co">#      Min       1Q   Median       3Q      Max </span></a>
+<a class="sourceLine" id="cb106-9" title="9"><span class="co"># -1.78912 -0.36333  0.08981  0.38741  1.13530 </span></a>
+<a class="sourceLine" id="cb106-10" title="10"><span class="co"># </span></a>
+<a class="sourceLine" id="cb106-11" title="11"><span class="co"># Coefficients:</span></a>
+<a class="sourceLine" id="cb106-12" title="12"><span class="co">#             Estimate Std. Error t value Pr(&gt;|t|)   </span></a>
+<a class="sourceLine" id="cb106-13" title="13"><span class="co"># (Intercept) 34.78778    9.15880   3.798  0.00254 **</span></a>
+<a class="sourceLine" id="cb106-14" title="14"><span class="co"># x1           0.21265    0.09659   2.202  0.04800 * </span></a>
+<a class="sourceLine" id="cb106-15" title="15"><span class="co"># x2           0.06963    0.15034   0.463  0.65156   </span></a>
+<a class="sourceLine" id="cb106-16" title="16"><span class="co"># factor(x3)b  1.46182    0.77780   1.879  0.08468 . </span></a>
+<a class="sourceLine" id="cb106-17" title="17"><span class="co"># ---</span></a>
+<a class="sourceLine" id="cb106-18" title="18"><span class="co"># Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></a>
+<a class="sourceLine" id="cb106-19" title="19"><span class="co"># </span></a>
+<a class="sourceLine" id="cb106-20" title="20"><span class="co"># Residual standard error: 0.8099 on 12 degrees of freedom</span></a>
+<a class="sourceLine" id="cb106-21" title="21"><span class="co"># Multiple R-squared:  0.9575,  Adjusted R-squared:  0.9468 </span></a>
+<a class="sourceLine" id="cb106-22" title="22"><span class="co"># F-statistic: 90.03 on 3 and 12 DF,  p-value: 1.706e-08</span></a></code></pre></div>
+<p>Получены статистики, аналогичные модели парной регрессии. Отличительная особенность модели - оценка параметра при переменной <code>x3</code>. <code>factor(x3)b</code> можно проинтерпретировать как величину, на которую изменится прогноз отклика, если <code>x3</code> примет значение <code>b</code>.</p>
+<p><a href="https://www.youtube.com/watch?v=k4SynxYq8OQ"><strong>Видео Б.Демешева “МНК в R. Пример с фертильностью (swiss)”</strong></a></p>
+<p>Рассмотрим, как строить <strong>модели с логарифмированной переменной, со взаимодействием какого-либо регрессора с факторным регрессором</strong>, а также как интерпретировать коэффициенты в таких моделях<br />
+Построим модель. Логарифмировать переменные можно при задании формулы с помощью <code>log()</code>. Взаимодействие <code>x1</code> и <code>x3</code> отображается с помощью <code>:</code>.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">lm3 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> dt3, <span class="dt">formula =</span> <span class="kw">log</span>(y) <span class="op">~</span><span class="st"> </span>x1<span class="op">+</span>x2<span class="op">+</span><span class="kw">factor</span>(x3)<span class="op">+</span>x1<span class="op">:</span><span class="kw">factor</span>(x3))</a>
+<a class="sourceLine" id="cb107-2" title="2"><span class="kw">summary</span>(lm3)</a>
+<a class="sourceLine" id="cb107-3" title="3"><span class="co"># </span></a>
+<a class="sourceLine" id="cb107-4" title="4"><span class="co"># Call:</span></a>
+<a class="sourceLine" id="cb107-5" title="5"><span class="co"># lm(formula = log(y) ~ x1 + x2 + factor(x3) + x1:factor(x3), data = dt3)</span></a>
+<a class="sourceLine" id="cb107-6" title="6"><span class="co"># </span></a>
+<a class="sourceLine" id="cb107-7" title="7"><span class="co"># Residuals:</span></a>
+<a class="sourceLine" id="cb107-8" title="8"><span class="co">#       Min        1Q    Median        3Q       Max </span></a>
+<a class="sourceLine" id="cb107-9" title="9"><span class="co"># -0.023725 -0.005650  0.002457  0.007550  0.014058 </span></a>
+<a class="sourceLine" id="cb107-10" title="10"><span class="co"># </span></a>
+<a class="sourceLine" id="cb107-11" title="11"><span class="co"># Coefficients:</span></a>
+<a class="sourceLine" id="cb107-12" title="12"><span class="co">#                 Estimate Std. Error t value Pr(&gt;|t|)    </span></a>
+<a class="sourceLine" id="cb107-13" title="13"><span class="co"># (Intercept)     3.533598   0.209379  16.877 3.28e-09 ***</span></a>
+<a class="sourceLine" id="cb107-14" title="14"><span class="co"># x1              0.003080   0.001520   2.027   0.0676 .  </span></a>
+<a class="sourceLine" id="cb107-15" title="15"><span class="co"># x2              0.002794   0.002879   0.971   0.3525    </span></a>
+<a class="sourceLine" id="cb107-16" title="16"><span class="co"># factor(x3)b     0.210507   0.144481   1.457   0.1731    </span></a>
+<a class="sourceLine" id="cb107-17" title="17"><span class="co"># x1:factor(x3)b -0.001851   0.001416  -1.307   0.2178    </span></a>
+<a class="sourceLine" id="cb107-18" title="18"><span class="co"># ---</span></a>
+<a class="sourceLine" id="cb107-19" title="19"><span class="co"># Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></a>
+<a class="sourceLine" id="cb107-20" title="20"><span class="co"># </span></a>
+<a class="sourceLine" id="cb107-21" title="21"><span class="co"># Residual standard error: 0.01219 on 11 degrees of freedom</span></a>
+<a class="sourceLine" id="cb107-22" title="22"><span class="co"># Multiple R-squared:  0.9626,  Adjusted R-squared:  0.9491 </span></a>
+<a class="sourceLine" id="cb107-23" title="23"><span class="co"># F-statistic: 70.87 on 4 and 11 DF,  p-value: 8.846e-08</span></a></code></pre></div>
+<p>Интерпретация параметров оценок параметров при <code>x1</code>, <code>x2</code>:<br />
+- <code>x1: 0.003080</code> - при увеличении <code>x1</code> на 1, <code>y</code> увеличится на <code>0.0031*100% = 0.31 %</code><br />
+- <code>x2: 0.002794</code> - при увеличении <code>x2</code> на 1, <code>y</code> увеличится на <code>0.0028*100% = 0.28 %</code><br />
+- <code>factor(x3)b: 0.210507</code> - если <code>x3</code> примет значение <code>b</code>, <code>log(y)</code> увеличится на 0.211, или <code>y</code> увеличится на <code>exp(0.211) = 1.235</code><br />
+- <code>x1:factor(x3)b: -0.001851</code> - если <code>x3</code> примет значение <code>b</code>, коэффициент при <code>x1</code> уменьшится на 0.002</p>
+<p>По построенной модели найдём прогноз отклика при <code>x1 = 105</code>, <code>x2 = 115</code>, <code>x3 = 'b'</code><br />
+Рассчитаем прогноз <code>log(y)</code> по найденным оценкам параметров:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="fl">3.533598</span> <span class="op">+</span><span class="st"> </span>(<span class="fl">0.003080</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.001851</span>)<span class="op">*</span><span class="dv">105</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.002794</span><span class="op">*</span><span class="dv">115</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.210507</span></a>
+<a class="sourceLine" id="cb108-2" title="2"><span class="co"># [1] 4.19446</span></a></code></pre></div>
+<p>Найдём прогноз <code>log(y)</code> при тех же значениях независимых переменных с помощью <code>predict()</code></p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="kw">predict</span>(lm3, <span class="kw">data.table</span>(<span class="dt">x1 =</span> <span class="dv">105</span>, <span class="dt">x2 =</span> <span class="dv">115</span>, <span class="dt">x3 =</span> <span class="st">&#39;b&#39;</span>))</a>
+<a class="sourceLine" id="cb109-2" title="2"><span class="co">#       1 </span></a>
+<a class="sourceLine" id="cb109-3" title="3"><span class="co"># 4.19457</span></a></code></pre></div>
+<p>Расхождения появились вследствие того, что в первом случае оценки параметров округлялись. Прогноз без округления:</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="kw">coef</span>(lm3)[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>(<span class="kw">coef</span>(lm3)[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span><span class="kw">coef</span>(lm3)[<span class="dv">5</span>])<span class="op">*</span><span class="dv">105</span> <span class="op">+</span><span class="st"> </span><span class="kw">coef</span>(lm3)[<span class="dv">3</span>]<span class="op">*</span><span class="dv">115</span> <span class="op">+</span><span class="st"> </span><span class="kw">coef</span>(lm3)[<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb110-2" title="2"><span class="co"># (Intercept) </span></a>
+<a class="sourceLine" id="cb110-3" title="3"><span class="co">#     4.19457</span></a></code></pre></div>
+<p>Значения сходятся. Найдем прогноз <code>y</code>:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="kw">exp</span>(<span class="fl">4.19457</span>)</a>
+<a class="sourceLine" id="cb111-2" title="2"><span class="co"># [1] 66.32521</span></a></code></pre></div>
+<p><a href="https://www.youtube.com/watch?v=J6NwmeAB8Gg"><strong>Видео Б.Демешева “Интерпретация коэффициента при логарифмировании в уравнениях регрессии”</strong></a></p>
 </div>
 <div id="пакеты" class="section level2">
-<h2><span class="header-section-number">3.2</span> Пакеты</h2>
+<h2><span class="header-section-number">3.4</span> Пакеты</h2>
 <p>Пакет - набор функций и наборов данных. Существуют стандартные пакеты, которые доступны сразу после установки R и позволяют R работать (например, <code>base</code>, <code>stats</code>, <code>methods</code>, <code>utils</code>). Также существуют сторонние пакеты, написанные различными авторами (например, <code>data.table</code>, который уже использовался нами ранее).<br />
 Установить пакет можно с помощью команды <code>install.packages()</code>, внутри которой указывается название пакета в кавычках.<br />
 Можно устанавливать пакеты с помощью интерфейса RStudio: Tools -&gt; Install Packages… или Install вкладки с пакетами
 <img src="rgr_econometrics_files/2020-04-12%2019_23_53-~_ttt%20-%20RStudio.png" alt="Install Packages" /></p>
 <p>Для использования пакета нужно его загрузить в текущую рабочую сессию с помощью функции <code>library()</code></p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="kw">library</span>(data.table)</a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="kw">library</span>(data.table)</a></code></pre></div>
 <p>Если пакетом нужно воспользоваться единожды, можно воспользоваться оператором <strong><code>::</code></strong>, не загружая пакет (но быть установлен он должен). Перед <code>::</code> указывается название пакета, после - вызываемая команда. Например:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">data.table<span class="op">::</span><span class="kw">shift</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">2</span>) <span class="co"># функция сдвигает вектор, в данном случае на 2 шага вправо</span></a>
-<a class="sourceLine" id="cb87-2" title="2"><span class="co">#  [1] NA NA  1  2  3  4  5  6  7  8</span></a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1">data.table<span class="op">::</span><span class="kw">shift</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">2</span>) <span class="co"># функция сдвигает вектор, в данном случае на 2 шага вправо</span></a>
+<a class="sourceLine" id="cb113-2" title="2"><span class="co">#  [1] NA NA  1  2  3  4  5  6  7  8</span></a></code></pre></div>
+<p>В случае, если требуется указать, в какую директорию нужно установить пакет, можно использовать функцию <strong><code>install.packages</code></strong>, в аргументе <strong><code>lib</code></strong> указав путь к нужной папке.<br />
+Это может быть полезно в случае, если имя учётной записи компьютера содержит кириллицу, что вызывает ошибки при установке пакетов. В таком случае пакеты нужно устанавливать в папку, путь к которой не содержит кириллицы. Например: <code>install.packages("data.table", lib="C:/R/packages")</code></p>
+<p>При загрузке пакетов также указывается путь к папке с помощью аргумента <code>lib.loc</code>: <code>library("data.table", lib.loc="C:/R/packages")</code></p>
 <p><strong>Список сторонних пакетов, которые могут помочь в выполнении РГР:</strong><br />
 <strong><code>data.table</code></strong> - для работы с таблицами<br />
 <strong><code>readxl</code></strong> - для чтения файлов с исходными данными в формате <code>.xls</code>, <code>.xlsx</code><br />
 <strong><code>Hmisc</code></strong> - имеется функция <code>rcorr()</code> для расчёта коэффициентов корреляции с проверкой значимости<br />
 <strong><code>GGally</code></strong> - имеется функция <code>ggpairs()</code> для построения корреляционных полей между набором показателей<br />
+<strong><code>psych</code></strong> - функция <code>pairs.panels()</code> для построения корреляционных полей, коэффициентов корреляции распределений переменных<br />
 <strong><code>e1071</code></strong> - функции <code>skewness()</code> и <code>kurtosis()</code> для расчёта коэффициентов асимметрии и эксцесса<br />
 <strong><code>broom</code></strong> - функция <code>augment</code> для построения таблицы с исходными данными, прогнозами, остатками и другими показателями на основе модели регрессии<br />
 <strong><code>ggplot2</code></strong> - один из самых популярных пакетов для визуализации данных<br />
@@ -363,17 +599,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 В аргумент <code>path</code> нужно передать в кавычках путь к файлу, включая название самого файла с его расширением.<br />
 Можно указывать полный путь к документу, например, <code>'C:/Users/Mihail/Documents/rgr_econometrics/_book/rgr_econometrics_files/codes.xls'</code> (нужно использовать прямые слеши <strong><code>/</code></strong>)<br />
 Можно указывать неполный путь, начиная от текущей рабочей директории. Функция <code>getwd()</code> позволяет узнать, какая директория является текущей. <code>setwd()</code> позволяет установыить другую директорию в качестве текущей.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw">getwd</span>()</a>
-<a class="sourceLine" id="cb88-2" title="2"><span class="co"># [1] &quot;C:/Users/Mihail/Documents/rgr_econometrics&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1"><span class="kw">getwd</span>()</a>
+<a class="sourceLine" id="cb114-2" title="2"><span class="co"># [1] &quot;C:/Users/Mihail/Documents/rgr_econometrics&quot;</span></a></code></pre></div>
 <p>В аргумент <code>sheet</code> можно передать номер листа, с которого нужно считать данные в документе. По умолчанию читается первый лист<br />
 Посмотрим, объектом какого класса является результат выполнения функции:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">xlsx1 &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_xlsx</span>(<span class="st">&#39;_book/rgr_econometrics_files/01 ДАННЫЕ для РГР-ФБЭ.xlsx&#39;</span>)</a>
-<a class="sourceLine" id="cb89-2" title="2"><span class="kw">class</span>(xlsx1) </a>
-<a class="sourceLine" id="cb89-3" title="3"><span class="co"># [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1">xlsx1 &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_xlsx</span>(<span class="st">&#39;_book/rgr_econometrics_files/01 ДАННЫЕ для РГР-ФБЭ.xlsx&#39;</span>)</a>
+<a class="sourceLine" id="cb115-2" title="2"><span class="kw">class</span>(xlsx1) </a>
+<a class="sourceLine" id="cb115-3" title="3"><span class="co"># [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></a></code></pre></div>
 <p>В результате чтения была получена таблица другого класса - <code>tibble</code>. Используем функцию <code>as.data.table()</code>, чтобы конвертировать таблицу в <code>data.table</code>:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">xlsx1 &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(xlsx1)</a>
-<a class="sourceLine" id="cb90-2" title="2"><span class="kw">class</span>(xlsx1) </a>
-<a class="sourceLine" id="cb90-3" title="3"><span class="co"># [1] &quot;data.table&quot; &quot;data.frame&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1">xlsx1 &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(xlsx1)</a>
+<a class="sourceLine" id="cb116-2" title="2"><span class="kw">class</span>(xlsx1) </a>
+<a class="sourceLine" id="cb116-3" title="3"><span class="co"># [1] &quot;data.table&quot; &quot;data.frame&quot;</span></a></code></pre></div>
 
 </div>
 </div>

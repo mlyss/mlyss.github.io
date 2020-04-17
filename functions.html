@@ -24,7 +24,7 @@
 <meta name="author" content="Михаил Лысенко" />
 
 
-<meta name="date" content="2020-04-15" />
+<meta name="date" content="2020-04-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="intro.html"/>
-
+<link rel="next" href="graphics.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,6 +50,47 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/proj4js-2.3.15/proj4.js"></script>
+<link href="libs/highcharts-7.0.1/css/motion.css" rel="stylesheet" />
+<link href="libs/highcharts-7.0.1/css/htmlwdgtgrid.css" rel="stylesheet" />
+<script src="libs/highcharts-7.0.1/highcharts.js"></script>
+<script src="libs/highcharts-7.0.1/highcharts-3d.js"></script>
+<script src="libs/highcharts-7.0.1/highcharts-more.js"></script>
+<script src="libs/highcharts-7.0.1/modules/stock.js"></script>
+<script src="libs/highcharts-7.0.1/modules/map.js"></script>
+<script src="libs/highcharts-7.0.1/modules/annotations.js"></script>
+<script src="libs/highcharts-7.0.1/modules/boost.js"></script>
+<script src="libs/highcharts-7.0.1/modules/data.js"></script>
+<script src="libs/highcharts-7.0.1/modules/drag-panes.js"></script>
+<script src="libs/highcharts-7.0.1/modules/drilldown.js"></script>
+<script src="libs/highcharts-7.0.1/modules/item-series.js"></script>
+<script src="libs/highcharts-7.0.1/modules/offline-exporting.js"></script>
+<script src="libs/highcharts-7.0.1/modules/overlapping-datalabels.js"></script>
+<script src="libs/highcharts-7.0.1/modules/exporting.js"></script>
+<script src="libs/highcharts-7.0.1/modules/export-data.js"></script>
+<script src="libs/highcharts-7.0.1/modules/funnel.js"></script>
+<script src="libs/highcharts-7.0.1/modules/heatmap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/treemap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/sankey.js"></script>
+<script src="libs/highcharts-7.0.1/modules/solid-gauge.js"></script>
+<script src="libs/highcharts-7.0.1/modules/streamgraph.js"></script>
+<script src="libs/highcharts-7.0.1/modules/sunburst.js"></script>
+<script src="libs/highcharts-7.0.1/modules/vector.js"></script>
+<script src="libs/highcharts-7.0.1/modules/wordcloud.js"></script>
+<script src="libs/highcharts-7.0.1/modules/xrange.js"></script>
+<script src="libs/highcharts-7.0.1/modules/tilemap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/venn.js"></script>
+<script src="libs/highcharts-7.0.1/modules/gantt.js"></script>
+<script src="libs/highcharts-7.0.1/modules/timeline.js"></script>
+<script src="libs/highcharts-7.0.1/modules/parallel-coordinates.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/grouped-categories.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/motion.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/multicolor_series.js"></script>
+<script src="libs/highcharts-7.0.1/custom/reset.js"></script>
+<script src="libs/highcharts-7.0.1/custom/symbols-extra.js"></script>
+<script src="libs/highcharts-7.0.1/custom/text-symbols.js"></script>
+<script src="libs/highchart-binding-0.7.0/highchart.js"></script>
 
 
 <style type="text/css">
@@ -145,6 +186,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="functions.html"><a href="functions.html#некоторые-полезные-функции"><i class="fa fa-check"></i><b>3.2</b> Некоторые полезные функции</a></li>
 <li class="chapter" data-level="3.3" data-path="functions.html"><a href="functions.html#функция-lm-для-моделей-регрессии"><i class="fa fa-check"></i><b>3.3</b> Функция lm() для моделей регрессии</a></li>
 <li class="chapter" data-level="3.4" data-path="functions.html"><a href="functions.html#пакеты"><i class="fa fa-check"></i><b>3.4</b> Пакеты</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>4</b> Визуализация данных</a><ul>
+<li class="chapter" data-level="4.1" data-path="graphics.html"><a href="graphics.html#стандартные-методы"><i class="fa fa-check"></i><b>4.1</b> Стандартные методы</a></li>
+<li class="chapter" data-level="4.2" data-path="graphics.html"><a href="graphics.html#пакет-ggplot2"><i class="fa fa-check"></i><b>4.2</b> Пакет ggplot2</a></li>
+<li class="chapter" data-level="4.3" data-path="graphics.html"><a href="graphics.html#пакет-highcharter"><i class="fa fa-check"></i><b>4.3</b> Пакет highcharter</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://pages.github.com/" target="blank">Опубликовано с GitHub Pages</a></li>
@@ -462,7 +508,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb100-18" title="18"><span class="co"># Multiple R-squared:  0.9426,  Adjusted R-squared:  0.9385 </span></a>
 <a class="sourceLine" id="cb100-19" title="19"><span class="co"># F-statistic: 230.1 on 1 and 14 DF,  p-value: 4.389e-10</span></a></code></pre></div>
 <p><code>Coefficients:</code> - наряду с оценками переметров выводит их стандартные ошибки (<code>Std. Error</code>); t-статистику для проверки основной гипотезы о равенстве параметра нулю (<code>t value</code>); p-значение (<code>Pr(&gt;|t|)</code>), можно интерпретировать как минимальное значение ошибки, с которой можно отклонить основной гипотезу, либо как уровень ошибки, при котором критическое (табличное) t будет равно расчётному.<br />
-<code>Residual standard error</code>
 <code>Multiple R-squared</code> - коэффициент детерминации<br />
 <code>F-statistic</code> - расчётное значение статистики Фишера<br />
 <code>p-value</code> - вероятность ошибки, при которой критическое значение F-статистики равно расчётному</p>
@@ -581,9 +626,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Если пакетом нужно воспользоваться единожды, можно воспользоваться оператором <strong><code>::</code></strong>, не загружая пакет (но быть установлен он должен). Перед <code>::</code> указывается название пакета, после - вызываемая команда. Например:</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1">data.table<span class="op">::</span><span class="kw">shift</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">2</span>) <span class="co"># функция сдвигает вектор, в данном случае на 2 шага вправо</span></a>
 <a class="sourceLine" id="cb113-2" title="2"><span class="co">#  [1] NA NA  1  2  3  4  5  6  7  8</span></a></code></pre></div>
-<p>В случае, если требуется указать, в какую директорию нужно установить пакет, можно использовать функцию <strong><code>install.packages</code></strong>, в аргументе <strong><code>lib</code></strong> указав путь к нужной папке.<br />
+<p>В случае, если требуется указать, в какую директорию нужно установить пакет, можно использовать функцию <strong><code>install.packages()</code></strong>, в аргументе <strong><code>lib</code></strong> указав путь к нужной папке.<br />
 Это может быть полезно в случае, если имя учётной записи компьютера содержит кириллицу, что вызывает ошибки при установке пакетов. В таком случае пакеты нужно устанавливать в папку, путь к которой не содержит кириллицы. Например: <code>install.packages("data.table", lib="C:/R/packages")</code></p>
 <p>При загрузке пакетов также указывается путь к папке с помощью аргумента <code>lib.loc</code>: <code>library("data.table", lib.loc="C:/R/packages")</code></p>
+<p><a href="https://cran.r-project.org/web/packages/available_packages_by_name.html"><strong>Список доступных пакетов на CRAN"</strong></a><br />
+Для каждого из пакетов имеется документация (“Reference manual”), с помощью которой можно подробнее ознакомиться с пакетом, в том числе с доступными функциями<br />
+Например, <a href="https://cran.r-project.org/web/packages/data.table/data.table.pdf"><strong>документация по <code>data.table</code></strong></a></p>
 <p><strong>Список сторонних пакетов, которые могут помочь в выполнении РГР:</strong><br />
 <strong><code>data.table</code></strong> - для работы с таблицами<br />
 <strong><code>readxl</code></strong> - для чтения файлов с исходными данными в формате <code>.xls</code>, <code>.xlsx</code><br />
@@ -618,8 +666,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="intro.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

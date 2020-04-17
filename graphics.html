@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Раздел 4 Визуализация данных | Методические указания по выполнению расчётно-графической работы в R</title>
+  <meta name="description" content="Раздел 4 Визуализация данных | Методические указания по выполнению расчётно-графической работы в R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Раздел 4 Визуализация данных | Методические указания по выполнению расчётно-графической работы в R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Раздел 4 Визуализация данных | Методические указания по выполнению расчётно-графической работы в R" />
+  
+  
+  
+
+<meta name="author" content="Михаил Лысенко" />
+
+
+<meta name="date" content="2020-04-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="functions.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/proj4js-2.3.15/proj4.js"></script>
+<link href="libs/highcharts-7.0.1/css/motion.css" rel="stylesheet" />
+<link href="libs/highcharts-7.0.1/css/htmlwdgtgrid.css" rel="stylesheet" />
+<script src="libs/highcharts-7.0.1/highcharts.js"></script>
+<script src="libs/highcharts-7.0.1/highcharts-3d.js"></script>
+<script src="libs/highcharts-7.0.1/highcharts-more.js"></script>
+<script src="libs/highcharts-7.0.1/modules/stock.js"></script>
+<script src="libs/highcharts-7.0.1/modules/map.js"></script>
+<script src="libs/highcharts-7.0.1/modules/annotations.js"></script>
+<script src="libs/highcharts-7.0.1/modules/boost.js"></script>
+<script src="libs/highcharts-7.0.1/modules/data.js"></script>
+<script src="libs/highcharts-7.0.1/modules/drag-panes.js"></script>
+<script src="libs/highcharts-7.0.1/modules/drilldown.js"></script>
+<script src="libs/highcharts-7.0.1/modules/item-series.js"></script>
+<script src="libs/highcharts-7.0.1/modules/offline-exporting.js"></script>
+<script src="libs/highcharts-7.0.1/modules/overlapping-datalabels.js"></script>
+<script src="libs/highcharts-7.0.1/modules/exporting.js"></script>
+<script src="libs/highcharts-7.0.1/modules/export-data.js"></script>
+<script src="libs/highcharts-7.0.1/modules/funnel.js"></script>
+<script src="libs/highcharts-7.0.1/modules/heatmap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/treemap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/sankey.js"></script>
+<script src="libs/highcharts-7.0.1/modules/solid-gauge.js"></script>
+<script src="libs/highcharts-7.0.1/modules/streamgraph.js"></script>
+<script src="libs/highcharts-7.0.1/modules/sunburst.js"></script>
+<script src="libs/highcharts-7.0.1/modules/vector.js"></script>
+<script src="libs/highcharts-7.0.1/modules/wordcloud.js"></script>
+<script src="libs/highcharts-7.0.1/modules/xrange.js"></script>
+<script src="libs/highcharts-7.0.1/modules/tilemap.js"></script>
+<script src="libs/highcharts-7.0.1/modules/venn.js"></script>
+<script src="libs/highcharts-7.0.1/modules/gantt.js"></script>
+<script src="libs/highcharts-7.0.1/modules/timeline.js"></script>
+<script src="libs/highcharts-7.0.1/modules/parallel-coordinates.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/grouped-categories.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/motion.js"></script>
+<script src="libs/highcharts-7.0.1/plugins/multicolor_series.js"></script>
+<script src="libs/highcharts-7.0.1/custom/reset.js"></script>
+<script src="libs/highcharts-7.0.1/custom/symbols-extra.js"></script>
+<script src="libs/highcharts-7.0.1/custom/text-symbols.js"></script>
+<script src="libs/highchart-binding-0.7.0/highchart.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Методические указания по выполнению расчётно-графической работы в R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Задание на расчётно-графическую работу</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#порядок-выполнения-работы"><i class="fa fa-check"></i><b>1.1</b> Порядок выполнения работы</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Начало работы</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#установка-r-и-rstudio-знакомство-с-рабочей-областью"><i class="fa fa-check"></i><b>2.1</b> Установка R и Rstudio, знакомство с рабочей областью</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#типы-переменных"><i class="fa fa-check"></i><b>2.2</b> Типы переменных</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#основные-операторы"><i class="fa fa-check"></i><b>2.3</b> Основные операторы</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#структуры-данных"><i class="fa fa-check"></i><b>2.4</b> Структуры данных</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>3</b> Пакеты и функции</a><ul>
+<li class="chapter" data-level="3.1" data-path="functions.html"><a href="functions.html#функции-в-r"><i class="fa fa-check"></i><b>3.1</b> Функции в R</a></li>
+<li class="chapter" data-level="3.2" data-path="functions.html"><a href="functions.html#некоторые-полезные-функции"><i class="fa fa-check"></i><b>3.2</b> Некоторые полезные функции</a></li>
+<li class="chapter" data-level="3.3" data-path="functions.html"><a href="functions.html#функция-lm-для-моделей-регрессии"><i class="fa fa-check"></i><b>3.3</b> Функция lm() для моделей регрессии</a></li>
+<li class="chapter" data-level="3.4" data-path="functions.html"><a href="functions.html#пакеты"><i class="fa fa-check"></i><b>3.4</b> Пакеты</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>4</b> Визуализация данных</a><ul>
+<li class="chapter" data-level="4.1" data-path="graphics.html"><a href="graphics.html#стандартные-методы"><i class="fa fa-check"></i><b>4.1</b> Стандартные методы</a></li>
+<li class="chapter" data-level="4.2" data-path="graphics.html"><a href="graphics.html#пакет-ggplot2"><i class="fa fa-check"></i><b>4.2</b> Пакет ggplot2</a></li>
+<li class="chapter" data-level="4.3" data-path="graphics.html"><a href="graphics.html#пакет-highcharter"><i class="fa fa-check"></i><b>4.3</b> Пакет highcharter</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://pages.github.com/" target="blank">Опубликовано с GitHub Pages</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Методические указания по выполнению расчётно-графической работы в R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="graphics" class="section level1">
+<h1><span class="header-section-number">Раздел 4</span> Визуализация данных</h1>
+<p>Рассмотрим способы визуализации на сгенерированном наборе данных:</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1">dt4 &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">16</span>, </a>
+<a class="sourceLine" id="cb117-2" title="2">                  <span class="dt">y  =</span> <span class="kw">seq</span>(<span class="dv">60</span>,<span class="dt">by =</span> <span class="fl">0.5</span>, <span class="dt">length.out =</span> <span class="dv">16</span>)<span class="op">+</span><span class="kw">rnorm</span>(<span class="dv">16</span>, <span class="dv">0</span>, <span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb117-3" title="3">                  <span class="dt">x1 =</span> <span class="kw">seq</span>(<span class="dv">80</span>,<span class="dt">by =</span> <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">16</span>)<span class="op">+</span><span class="kw">rnorm</span>(<span class="dv">16</span>, <span class="dv">0</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb117-4" title="4">                  <span class="dt">x2 =</span> <span class="kw">seq</span>(<span class="dv">100</span>,<span class="dt">by =</span> <span class="dv">3</span>, <span class="dt">length.out =</span> <span class="dv">16</span>)<span class="op">+</span><span class="kw">rnorm</span>(<span class="dv">16</span>, <span class="dv">0</span>, <span class="dv">5</span>),</a>
+<a class="sourceLine" id="cb117-5" title="5">                  <span class="dt">x3=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&#39;a&#39;</span>, <span class="dv">8</span>),<span class="kw">rep</span>(<span class="st">&#39;b&#39;</span>, <span class="dv">8</span>))</a>
+<a class="sourceLine" id="cb117-6" title="6">           )</a>
+<a class="sourceLine" id="cb117-7" title="7">dt4</a>
+<a class="sourceLine" id="cb117-8" title="8"><span class="co">#     id        y       x1        x2 x3</span></a>
+<a class="sourceLine" id="cb117-9" title="9"><span class="co">#  1:  1 60.67591 79.21969  92.26569  a</span></a>
+<a class="sourceLine" id="cb117-10" title="10"><span class="co">#  2:  2 61.72452 80.58171 108.15305  a</span></a>
+<a class="sourceLine" id="cb117-11" title="11"><span class="co">#  3:  3 61.92236 82.87583 102.37141  a</span></a>
+<a class="sourceLine" id="cb117-12" title="12"><span class="co">#  4:  4 61.79400 85.93679  97.92914  a</span></a>
+<a class="sourceLine" id="cb117-13" title="13"><span class="co">#  5:  5 62.81729 82.87147 106.10911  a</span></a>
+<a class="sourceLine" id="cb117-14" title="14"><span class="co">#  6:  6 62.80943 82.69275 103.06020  a</span></a>
+<a class="sourceLine" id="cb117-15" title="15"><span class="co">#  7:  7 62.21694 87.40802 123.68272  a</span></a>
+<a class="sourceLine" id="cb117-16" title="16"><span class="co">#  8:  8 63.67433 87.46018 126.63479  a</span></a>
+<a class="sourceLine" id="cb117-17" title="17"><span class="co">#  9:  9 63.58981 87.88465 116.70405  b</span></a>
+<a class="sourceLine" id="cb117-18" title="18"><span class="co"># 10: 10 64.35889 85.54751 128.79754  b</span></a>
+<a class="sourceLine" id="cb117-19" title="19"><span class="co"># 11: 11 66.37115 87.66050 137.00991  b</span></a>
+<a class="sourceLine" id="cb117-20" title="20"><span class="co"># 12: 12 63.27261 91.40185 124.46477  b</span></a>
+<a class="sourceLine" id="cb117-21" title="21"><span class="co"># 13: 13 65.53812 91.87163 144.58721  b</span></a>
+<a class="sourceLine" id="cb117-22" title="22"><span class="co"># 14: 14 67.40902 91.41421 140.32270  b</span></a>
+<a class="sourceLine" id="cb117-23" title="23"><span class="co"># 15: 15 67.02565 92.08436 139.41926  b</span></a>
+<a class="sourceLine" id="cb117-24" title="24"><span class="co"># 16: 16 68.65968 98.28665 140.72652  b</span></a></code></pre></div>
+<div id="стандартные-методы" class="section level2">
+<h2><span class="header-section-number">4.1</span> Стандартные методы</h2>
+<p>Стандартные методы ограничены в возможностях, чаще используются для быстрой визуализации “для себя”</p>
+<p><strong>Функция <code>plot()</code></strong> чаще используется для создания точечных диаграмм</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="kw">plot</span>(<span class="dt">x =</span> dt4<span class="op">$</span>x1, <span class="dt">y =</span> dt4<span class="op">$</span>y)</a></code></pre></div>
+<p><img src="rgr_econometrics_files/figure-html/unnamed-chunk-117-1.png" width="672" />
+Некоторые аргументы: <code>xlab</code> - название оси X, <code>ylab</code> - название оси Y, <code>main</code> - - название графика, <code>col</code> - цвет наблюдений</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1"><span class="kw">plot</span>(<span class="dt">x =</span> dt4<span class="op">$</span>x1, <span class="dt">y =</span> dt4<span class="op">$</span>x2, <span class="dt">xlab =</span> <span class="st">&quot;X1&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;X2&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Корреляционное поле X1 - X2&quot;</span>)</a></code></pre></div>
+<p><img src="rgr_econometrics_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
+<p>Можно вывести корреляционные поля между всеми переменными на одном графике</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="kw">plot</span>(dt4[,.(y,x1,x2,<span class="dt">x3=</span><span class="kw">factor</span>(x3))]) <span class="co"># сменили тип x3 с character на factor</span></a></code></pre></div>
+<p><img src="rgr_econometrics_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
+<p><strong>Функция <code>hist()</code></strong> - для создания гистограмм</p>
+<p>Аргумент <code>breaks</code> можно использовать для задания количества классов (если передаём одно число), либо границ классов (если передаём числовой вектор)</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1"><span class="kw">hist</span>(<span class="dt">x =</span> dt4<span class="op">$</span>y, <span class="dt">xlab =</span> <span class="st">&quot;Y&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Наблюдаемая частота&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Гистограмма Y&quot;</span>, <span class="dt">breaks =</span> <span class="dv">6</span>)</a></code></pre></div>
+<p><img src="rgr_econometrics_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
+<p><strong>Функция <code>boxplot()</code></strong> - для создания боксплотов (“ящиков с усами”)</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="kw">boxplot</span>(dt4[,.(y,x1,x2)])</a></code></pre></div>
+<p><img src="rgr_econometrics_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+<p>На графике линия внутри ящика - медиана, границы ящика - 1-я (Q1) и 3-я (Q3) квартили, усы - полтора межквартильного размаха (IQR = Q3 - Q1) вверх и вниз от Q3 и Q1</p>
+<p>Для создания более сложных и интересных графиков рассмотрим пакеты <code>ggplot2</code>, <code>highcharter</code>, <code>plotly</code></p>
+</div>
+<div id="пакет-ggplot2" class="section level2">
+<h2><span class="header-section-number">4.2</span> Пакет ggplot2</h2>
+<p><code>ggplot2</code> - один из самых популярных пакетов для визуализации в R<br />
+В <code>ggplot 2</code> график строится слоями: сначала указываются исходные данные и переменные (внутри функции <code>aes()</code>), после этого - тип графика, после этого - прочие слои (подписи, легенды, свойства осей, оформление). Все слои накладываются друг на друга с помощью оператора <code>+</code>.<br />
+Например, построим график изменения <code>x1</code> с ростом порядкового номера <code>id</code>:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb123-2" title="2"></a>
+<a class="sourceLine" id="cb123-3" title="3"><span class="kw">ggplot</span>(dt4, <span class="kw">aes</span>(<span class="dt">x =</span> id, <span class="dt">y =</span> x1)) <span class="op">+</span><span class="st">   </span><span class="co"># первый слой (данные) и переменные</span></a>
+<a class="sourceLine" id="cb123-4" title="4"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)<span class="op">+</span><span class="st"> </span><span class="co"># второй слой - тип диаграммы (линейная), красного цвета</span></a>
+<a class="sourceLine" id="cb123-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">2</span>)  <span class="co"># третий слой - тип диаграммы (точечная), размером 2 (больше стандартного)</span></a></code></pre></div>
+<p><img src="rgr_econometrics_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
+<p><a href="https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf">Документация по ggplot2</a></p>
+<p>Основные функции:<br />
+- <code>geom_point()</code> - точечная диаграмма<br />
+- <code>geom_line()</code> - линия<br />
+- <code>geom_histogram()</code> - гистограмма<br />
+- <code>geom_boxplot()</code> - боксплот<br />
+- <code>geom_smooth()</code> - сглаживающая кривая<br />
+- <code>geom_text()</code> - текст (подписи данных)<br />
+- <code>stat_ellipse()</code> - эллипс рассеяния<br />
+- <code>labs()</code> - задать текст для заголовка, осей, легенды<br />
+- <code>scale_colour_manual()</code> - задать цветовую шкалу вручную<br />
+- <code>theme_light()</code> - тема (общее оформление), <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">список тем</a><br />
+- <code>scale_x_continuous()</code>, <code>scale_y_continuous()</code> - изменение непрерывных шкал по <code>x</code> и <code>y</code> (<code>trans='log'</code> для логарифмической шкалы)</p>
+<p>Построим точечную диаграмму с применением большого числа функций (слоёв)</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"></a>
+<a class="sourceLine" id="cb124-2" title="2"><span class="kw">ggplot</span>(dt4, <span class="kw">aes</span>(<span class="dt">x =</span> x1, <span class="dt">y =</span> y, <span class="dt">size =</span> x2, <span class="dt">col =</span> <span class="kw">factor</span>(x3), <span class="dt">label =</span> id)) <span class="op">+</span><span class="st"> </span><span class="co"># размер в зависимости от x2, цвет - от x3, подписи - id   </span></a>
+<a class="sourceLine" id="cb124-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">fill=</span><span class="st">&quot;#D1D1D1&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.8</span>, <span class="dt">shape=</span><span class="dv">21</span>, <span class="dt">stroke=</span><span class="fl">1.3</span>)<span class="op">+</span><span class="st">  </span><span class="co"># форма №21, заполнение fill светло-серым, непрозначность 80%, толщина границ 1.3</span></a>
+<a class="sourceLine" id="cb124-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> dt4[,.(<span class="dt">x1=</span><span class="kw">mean</span>(x1), <span class="dt">y=</span><span class="kw">mean</span>(y), x2, id),x3], <span class="co"># рассчитали средний y, x1 для каждого x3, x2 и id неважны, но исключить нельзя</span></a>
+<a class="sourceLine" id="cb124-5" title="5">             <span class="kw">aes</span>(<span class="dt">x=</span>x1,<span class="dt">y=</span>y),      <span class="co"># отметим среднее по x1 и y</span></a>
+<a class="sourceLine" id="cb124-6" title="6">             <span class="dt">color=</span><span class="st">&quot;black&quot;</span>,      <span class="co"># всё черного  цвета</span></a>
+<a class="sourceLine" id="cb124-7" title="7">             <span class="dt">size=</span><span class="dv">5</span>,            <span class="co"># крупный размер (10)</span></a>
+<a class="sourceLine" id="cb124-8" title="8">             <span class="dt">shape=</span><span class="dv">3</span>,            <span class="co"># форма №3 (форма плюса)</span></a>
+<a class="sourceLine" id="cb124-9" title="9">             <span class="dt">stroke =</span> <span class="fl">1.5</span>)<span class="op">+</span><span class="st">  </span><span class="co"># форма №21, заполнение fill светло-серым, непрозначность 80%, толщина границ 1.3</span></a>
+<a class="sourceLine" id="cb124-10" title="10"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> dt4[,.(<span class="dt">x1=</span><span class="kw">mean</span>(x1), <span class="dt">y=</span><span class="kw">mean</span>(y), <span class="dt">x2=</span><span class="dv">0</span>, <span class="dt">id=</span><span class="kw">round</span>(<span class="kw">cor</span>(y,x1),<span class="dv">3</span>)),x3],</a>
+<a class="sourceLine" id="cb124-11" title="11">            <span class="kw">aes</span>(<span class="dt">x=</span>x1,<span class="dt">y=</span>y,<span class="dt">label=</span>id, <span class="dt">col=</span><span class="kw">factor</span>(x3)), <span class="co"># выведем коэффициент корреляции для каждой груммы по x3</span></a>
+<a class="sourceLine" id="cb124-12" title="12">            <span class="dt">size=</span><span class="dv">10</span>,             <span class="co"># размер текста</span></a>
+<a class="sourceLine" id="cb124-13" title="13">            <span class="dt">alpha=</span><span class="fl">0.3</span>,           <span class="co"># на 70% прозрачный</span></a>
+<a class="sourceLine" id="cb124-14" title="14">            <span class="dt">nudge_x=</span><span class="dv">3</span>,           <span class="co"># смещение по х вправо</span></a>
+<a class="sourceLine" id="cb124-15" title="15">            <span class="dt">nudge_y=</span><span class="op">-</span><span class="dv">3</span>)<span class="op">+</span><span class="st">         </span><span class="co"># смещение по y вниз</span></a>
+<a class="sourceLine" id="cb124-16" title="16"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&#39;lm&#39;</span>,     <span class="co"># линия сглаживания (прямая)</span></a>
+<a class="sourceLine" id="cb124-17" title="17">              <span class="dt">se =</span> F)<span class="op">+</span><span class="st">           </span><span class="co"># убрать доверительный интервал</span></a>
+<a class="sourceLine" id="cb124-18" title="18"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">col =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">nudge_x =</span> <span class="fl">0.5</span>)<span class="op">+</span><span class="st">    </span><span class="co"># добавить подписи черного цвета, рамер 4, смещение по x на 0.5</span></a>
+<a class="sourceLine" id="cb124-19" title="19"><span class="st">  </span><span class="kw">stat_ellipse</span>(<span class="dt">level =</span> <span class="fl">0.9</span>)<span class="op">+</span><span class="st">                            </span><span class="co"># построить эллипс рассеяния с доверительной вероятностью 0.9</span></a>
+<a class="sourceLine" id="cb124-20" title="20"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;#0080FF&quot;</span>, <span class="st">&quot;#FF6666&quot;</span>))<span class="op">+</span><span class="st">  </span><span class="co"># задать цветовую шкалу (используем синий и красный)</span></a>
+<a class="sourceLine" id="cb124-21" title="21"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;All variables&quot;</span>,          <span class="co"># добавить название диаграммы</span></a>
+<a class="sourceLine" id="cb124-22" title="22">     <span class="dt">x =</span> <span class="st">&quot;Value of x1&quot;</span>,                  <span class="co"># название оси х</span></a>
+<a class="sourceLine" id="cb124-23" title="23">     <span class="dt">y =</span> <span class="st">&quot;Value of y&quot;</span>)<span class="op">+</span><span class="st">                  </span><span class="co"># название оси y</span></a>
+<a class="sourceLine" id="cb124-24" title="24"><span class="st">  </span><span class="kw">theme_light</span>()                          <span class="co"># светлое отображение оси координат</span></a></code></pre></div>
+<p><img src="rgr_econometrics_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+<p><a href="https://www.rapidtables.com/web/color/RGB_Color.html">Палитра цветов</a> (задавать цвета можно в формате <code>"#RRGGBB"</code>)</p>
+<p>Намера для параметра <code>shape</code> и соответствующие формы точек:<br />
+<img src="rgr_econometrics_files/ggplot2_shapes.png" alt="Формы точек" /></p>
+</div>
+<div id="пакет-highcharter" class="section level2">
+<h2><span class="header-section-number">4.3</span> Пакет highcharter</h2>
+<p>С пакетом <code>highcharter</code> графики строятся аналогичным образом (по слоям), с использованием оператора <strong><code>%&gt;%</code></strong> вместо <strong><code>+</code></strong>, результат получается интеравтивным и его можно сохранить как html - страницу.</p>
+<p><a href="https://cran.r-project.org/web/packages/highcharter/highcharter.pdf">Документация по highcharter</a><br />
+<a href="https://rpubs.com/mr148/304105">Примеры графиков в highcharter</a></p>
+<p>Основные функции:<br />
+- <code>highchart()</code> - создаёт объект типа <code>highchart</code><br />
+- <code>hc_xAxis()</code>, <code>hc_yAxis()</code> - настройки осей <code>x</code>, <code>y</code><br />
+- <code>hc_yAxis_multiples()</code> - настройки для нескольких осей <code>y</code><br />
+- <code>hc_add_series()</code> - добавить ряд данных (линия <code>type = 'line'</code> (по умолчанию), точечный <code>type = 'scatter'</code>, столбцовый <code>type = 'column'</code>)<br />
+- <code>hc_title()</code> - добавить название<br />
+- <code>hc_tooltip()</code> - формат всплывающего окна при наведении на наблюдение<br />
+- <code>hc_add_theme()</code> - выбрать тему для графика (доступные темы можно найти в документации)<br />
+- <code>hc_legend()</code> - формат легенды</p>
+<p>Например, построим график изменения показателей с ростом порядкового номера</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="kw">library</span>(highcharter)</a>
+<a class="sourceLine" id="cb125-2" title="2"></a>
+<a class="sourceLine" id="cb125-3" title="3"><span class="kw">highchart</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb125-4" title="4"><span class="st">    </span><span class="kw">hc_yAxis_multiples</span>(</a>
+<a class="sourceLine" id="cb125-5" title="5">      <span class="kw">list</span>(<span class="dt">opposite =</span> F, <span class="dt">title =</span> <span class="kw">list</span>(<span class="dt">text =</span> <span class="st">&quot;Value of y&quot;</span>), <span class="dt">min =</span> dt4[,<span class="kw">min</span>(y)<span class="op">-</span><span class="dv">10</span>]), <span class="co"># ось для y: отображение слева, название, минимальное значение</span></a>
+<a class="sourceLine" id="cb125-6" title="6">      <span class="kw">list</span>(<span class="dt">opposite =</span> T, <span class="dt">title =</span> <span class="kw">list</span>(<span class="dt">text =</span> <span class="st">&quot;Values of x1, x2&quot;</span>))                   <span class="co"># ось для x1, x2: отображение справа, название</span></a>
+<a class="sourceLine" id="cb125-7" title="7">    ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb125-8" title="8"><span class="st">  </span><span class="kw">hc_xAxis</span>(</a>
+<a class="sourceLine" id="cb125-9" title="9">    <span class="dt">categories =</span> dt4[, id],                  <span class="co"># значения по оси x</span></a>
+<a class="sourceLine" id="cb125-10" title="10">    <span class="dt">title =</span> <span class="kw">list</span>(<span class="dt">text =</span> <span class="st">&quot;Number in order&quot;</span>)   <span class="co"># название оси x</span></a>
+<a class="sourceLine" id="cb125-11" title="11">  ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb125-12" title="12"><span class="st">  </span><span class="kw">hc_add_series</span>(dt4[,<span class="kw">round</span>(y,<span class="dv">1</span>)], <span class="dt">name =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;column&#39;</span>, <span class="dt">color =</span> <span class="st">&quot;#D1D1D1&quot;</span>              <span class="co"># добавили серый столбцовый ряд y</span></a>
+<a class="sourceLine" id="cb125-13" title="13">    ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb125-14" title="14"><span class="st">  </span><span class="kw">hc_add_series</span>(dt4[,<span class="kw">round</span>(x1,<span class="dv">1</span>)], <span class="dt">name =</span> <span class="st">&quot;x1&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;line&#39;</span>, <span class="dt">yAxis =</span> <span class="dv">1</span>, <span class="dt">color =</span> <span class="st">&quot;#0080FF&quot;</span>   <span class="co"># добавили синюю линию x1 по второй оси</span></a>
+<a class="sourceLine" id="cb125-15" title="15">    ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb125-16" title="16"><span class="st">  </span><span class="kw">hc_add_series</span>(dt4[,<span class="kw">round</span>(x2,<span class="dv">1</span>)], <span class="dt">name =</span> <span class="st">&quot;x2&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;line&#39;</span>, <span class="dt">yAxis =</span> <span class="dv">1</span>, <span class="dt">color =</span> <span class="st">&quot;#FF6666&quot;</span>   <span class="co"># добавили красную линию x2 по второй оси</span></a>
+<a class="sourceLine" id="cb125-17" title="17">    ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb125-18" title="18"><span class="st">  </span><span class="kw">hc_add_theme</span>(<span class="kw">hc_theme_google</span>()) <span class="op">%&gt;%</span><span class="st">      </span><span class="co"># задать тему</span></a>
+<a class="sourceLine" id="cb125-19" title="19"><span class="st">  </span><span class="kw">hc_title</span>(<span class="dt">text =</span> <span class="st">&#39;Highcharter plot&#39;</span>)      <span class="co"># заголовок графика</span></a></code></pre></div>
+<div id="htmlwidget-5bd3913b70f540dba408" style="width:100%;height:500px;" class="highchart html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5bd3913b70f540dba408">{"x":{"hc_opts":{"title":{"text":"Highcharter plot"},"yAxis":[{"opposite":false,"title":{"text":"Value of y"},"min":50.6759075645518},{"opposite":true,"title":{"text":"Values of x1, x2"}}],"credits":{"enabled":false},"exporting":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"}},"xAxis":{"categories":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],"title":{"text":"Number in order"}},"series":[{"data":[60.7,61.7,61.9,61.8,62.8,62.8,62.2,63.7,63.6,64.4,66.4,63.3,65.5,67.4,67,68.7],"name":"y","type":"column","color":"#D1D1D1"},{"data":[79.2,80.6,82.9,85.9,82.9,82.7,87.4,87.5,87.9,85.5,87.7,91.4,91.9,91.4,92.1,98.3],"name":"x1","type":"line","yAxis":1,"color":"#0080FF"},{"data":[92.3,108.2,102.4,97.9,106.1,103.1,123.7,126.6,116.7,128.8,137,124.5,144.6,140.3,139.4,140.7],"name":"x2","type":"line","yAxis":1,"color":"#FF6666"}]},"theme":{"colors":["#0266C8","#F90101","#F2B50F","#00933B"],"chart":{"style":{"fontFamily":"Roboto","color":"#444444"}},"xAxis":{"gridLineWidth":1,"gridLineColor":"#F3F3F3","lineColor":"#F3F3F3","minorGridLineColor":"#F3F3F3","tickColor":"#F3F3F3","tickWidth":1},"yAxis":{"gridLineColor":"#F3F3F3","lineColor":"#F3F3F3","minorGridLineColor":"#F3F3F3","tickColor":"#F3F3F3","tickWidth":1},"legendBackgroundColor":"rgba(0, 0, 0, 0.5)","background2":"#505053","dataLabelsColor":"#B0B0B3","textColor":"#C0C0C0","contrastTextColor":"#F0F0F3","maskColor":"rgba(255,255,255,0.3)"},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","drillUpText":"Back to {series.name}","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"thousandsSep":" ","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":"Roboto","debug":false},"evals":[],"jsHooks":[]}</script>
+<p>Построим график зависимости <code>y</code> от <code>x1</code> c изменением цвета в зависимости от <code>x2</code></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"></a>
+<a class="sourceLine" id="cb126-2" title="2"><span class="kw">highchart</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb126-3" title="3"><span class="st">  </span><span class="kw">hc_yAxis</span>(</a>
+<a class="sourceLine" id="cb126-4" title="4">      <span class="dt">title =</span> <span class="kw">list</span>(<span class="dt">text =</span> <span class="st">&quot;Value of y&quot;</span>)  <span class="co"># название оси y</span></a>
+<a class="sourceLine" id="cb126-5" title="5">    ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb126-6" title="6"><span class="st">  </span><span class="kw">hc_xAxis</span>(</a>
+<a class="sourceLine" id="cb126-7" title="7">    <span class="dt">title =</span> <span class="kw">list</span>(<span class="dt">text =</span> <span class="st">&quot;Value of x1&quot;</span>)  <span class="co"># название оси x</span></a>
+<a class="sourceLine" id="cb126-8" title="8">  ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb126-9" title="9"><span class="st">  </span><span class="kw">hc_add_series</span>(dt4, <span class="dt">type =</span> <span class="st">&quot;scatter&quot;</span>, <span class="kw">hcaes</span>(<span class="dt">x =</span> x1, <span class="dt">y =</span> y, <span class="dt">size =</span> x2, <span class="dt">color =</span> <span class="kw">colorize</span> (x3, <span class="dt">colors =</span> <span class="kw">heat.colors</span>(<span class="dv">2</span>))) <span class="co"># точечная диаграмма</span></a>
+<a class="sourceLine" id="cb126-10" title="10">    ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb126-11" title="11"><span class="st">  </span><span class="kw">hc_tooltip</span>(<span class="dt">useHTML =</span> <span class="ot">TRUE</span>, <span class="dt">headerFormat =</span> <span class="st">&quot;&quot;</span>, <span class="dt">pointFormat =</span> <span class="kw">tooltip_table</span>(                  <span class="co"># форматирование всплывающего окна</span></a>
+<a class="sourceLine" id="cb126-12" title="12">      <span class="kw">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;Value of y&quot;</span>, <span class="st">&quot;Value of x1&quot;</span>, <span class="st">&quot;Value of x2&quot;</span>,  <span class="st">&quot;Value of x3&quot;</span>),                    <span class="co"># как будут отображаться названия переменных</span></a>
+<a class="sourceLine" id="cb126-13" title="13">      <span class="kw">c</span>(<span class="st">&quot;{point.id}&quot;</span>,  <span class="st">&quot;{point.y:.1f}&quot;</span> , <span class="st">&quot;{point.x1:.1f}&quot;</span> ,  <span class="st">&quot;{point.x2:.1f}&quot;</span>, <span class="st">&quot;{point.x3}&quot;</span> ) <span class="co"># какие значения выводить по порядку (:.1f - округлить до 1 значения после запятой)</span></a>
+<a class="sourceLine" id="cb126-14" title="14">    )) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb126-15" title="15"><span class="st">  </span><span class="kw">hc_add_theme</span>(<span class="kw">hc_theme_flatdark</span>())<span class="op">%&gt;%</span><span class="st">    </span><span class="co"># задать тему</span></a>
+<a class="sourceLine" id="cb126-16" title="16"><span class="st">  </span><span class="kw">hc_legend</span>(<span class="dt">enabled =</span> F) <span class="op">%&gt;%</span><span class="st">              </span><span class="co"># убрать легенду</span></a>
+<a class="sourceLine" id="cb126-17" title="17"><span class="st">  </span><span class="kw">hc_title</span>(<span class="dt">text =</span> <span class="st">&#39;Highcharter plot&#39;</span>)     <span class="co"># заголовок графика</span></a></code></pre></div>
+<div id="htmlwidget-641fe398be8c23fbb2bd" style="width:100%;height:500px;" class="highchart html-widget"></div>
+<script type="application/json" data-for="htmlwidget-641fe398be8c23fbb2bd">{"x":{"hc_opts":{"title":{"text":"Highcharter plot"},"yAxis":{"title":{"text":"Value of y"}},"credits":{"enabled":false},"exporting":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"}},"xAxis":{"title":{"text":"Value of x1"}},"series":[{"group":"group","data":[{"id":1,"y":60.6759075645518,"x1":79.2196877157603,"x2":92.2656924569471,"x3":"a","x":79.2196877157603,"size":92.2656924569471,"color":"#FF0000","z":92.2656924569471},{"id":2,"y":61.7245186198755,"x1":80.5817107669678,"x2":108.153054023406,"x3":"a","x":80.5817107669678,"size":108.153054023406,"color":"#FF0000","z":108.153054023406},{"id":3,"y":61.9223581240193,"x1":82.8758301518235,"x2":102.371408492193,"x3":"a","x":82.8758301518235,"size":102.371408492193,"color":"#FF0000","z":102.371408492193},{"id":4,"y":61.794000257771,"x1":85.9367938165178,"x2":97.9291391824693,"x3":"a","x":85.9367938165178,"size":97.9291391824693,"color":"#FF0000","z":97.9291391824693},{"id":5,"y":62.817291359193,"x1":82.8714743968719,"x2":106.109109196036,"x3":"a","x":82.8714743968719,"size":106.109109196036,"color":"#FF0000","z":106.109109196036},{"id":6,"y":62.8094305735317,"x1":82.692753738397,"x2":103.060196099515,"x3":"a","x":82.692753738397,"size":103.060196099515,"color":"#FF0000","z":103.060196099515},{"id":7,"y":62.2169444743762,"x1":87.4080235569972,"x2":123.682716106506,"x3":"a","x":87.4080235569972,"size":123.682716106506,"color":"#FF0000","z":123.682716106506},{"id":8,"y":63.6743302010759,"x1":87.4601848552019,"x2":126.634785642349,"x3":"a","x":87.4601848552019,"size":126.634785642349,"color":"#FF0000","z":126.634785642349},{"id":9,"y":63.5898082533789,"x1":87.8846480826123,"x2":116.704049452715,"x3":"b","x":87.8846480826123,"size":116.704049452715,"color":"#FFFF00","z":116.704049452715},{"id":10,"y":64.3588879816275,"x1":85.5475082566329,"x2":128.797542847218,"x3":"b","x":85.5475082566329,"size":128.797542847218,"color":"#FFFF00","z":128.797542847218},{"id":11,"y":66.3711479753302,"x1":87.6605028993475,"x2":137.009911095593,"x3":"b","x":87.6605028993475,"size":137.009911095593,"color":"#FFFF00","z":137.009911095593},{"id":12,"y":63.2726099075971,"x1":91.4018501632979,"x2":124.464768573903,"x3":"b","x":91.4018501632979,"size":124.464768573903,"color":"#FFFF00","z":124.464768573903},{"id":13,"y":65.538122855648,"x1":91.871631251494,"x2":144.587206762589,"x3":"b","x":91.871631251494,"size":144.587206762589,"color":"#FFFF00","z":144.587206762589},{"id":14,"y":67.4090163169578,"x1":91.4142119137,"x2":140.322698933126,"x3":"b","x":91.4142119137,"size":140.322698933126,"color":"#FFFF00","z":140.322698933126},{"id":15,"y":67.0256544865707,"x1":92.084358684397,"x2":139.419264790075,"x3":"b","x":92.084358684397,"size":139.419264790075,"color":"#FFFF00","z":139.419264790075},{"id":16,"y":68.6596841559842,"x1":98.286651770173,"x2":140.726515436887,"x3":"b","x":98.286651770173,"size":140.726515436887,"color":"#FFFF00","z":140.726515436887}],"type":"bubble"}],"tooltip":{"useHTML":true,"headerFormat":"","pointFormat":"<table>\n  <tr>\n    <th>id<\/th>\n    <td>{point.id}<\/td>\n  <\/tr>\n  <tr>\n    <th>Value of y<\/th>\n    <td>{point.y:.1f}<\/td>\n  <\/tr>\n  <tr>\n    <th>Value of x1<\/th>\n    <td>{point.x1:.1f}<\/td>\n  <\/tr>\n  <tr>\n    <th>Value of x2<\/th>\n    <td>{point.x2:.1f}<\/td>\n  <\/tr>\n  <tr>\n    <th>Value of x3<\/th>\n    <td>{point.x3}<\/td>\n  <\/tr>\n<\/table>"},"legend":{"enabled":false}},"theme":{"colors":["#f1c40f","#2ecc71","#9b59b6","#e74c3c","#34495e","#3498db","#1abc9c","#f39c12","#d35400"],"chart":{"backgroundColor":"#34495e"},"xAxis":{"gridLineDashStyle":"Dash","gridLineWidth":1,"gridLineColor":"#46627f","lineColor":"#46627f","minorGridLineColor":"#BDC3C7","tickColor":"#46627f","tickWidth":1,"title":{"style":{"color":"#FFFFFF"}}},"yAxis":{"gridLineDashStyle":"Dash","gridLineColor":"#46627f","lineColor":"#BDC3C7","minorGridLineColor":"#BDC3C7","tickColor":"#46627f","tickWidth":1,"title":{"style":{"color":"#FFFFFF"}}},"legendBackgroundColor":"rgba(0, 0, 0, 0.5)","background2":"#505053","dataLabelsColor":"#B0B0B3","textColor":"#34495e","contrastTextColor":"#F0F0F3","maskColor":"rgba(255,255,255,0.3)","title":{"style":{"color":"#FFFFFF"}},"subtitle":{"style":{"color":"#666666"}},"legend":{"itemStyle":{"color":"#C0C0C0"},"itemHoverStyle":{"color":"#C0C0C0"},"itemHiddenStyle":{"color":"#444444"}}},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","drillUpText":"Back to {series.name}","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"thousandsSep":" ","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="functions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rgr_econometrics.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
